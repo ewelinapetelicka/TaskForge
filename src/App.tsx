@@ -1,8 +1,16 @@
 import React from 'react';
 import './App.css';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+]);
 
 export function App() {
   return (
-      <h1>TaskForge</h1>
+      <RouterProvider router={router} />
   );
 }
