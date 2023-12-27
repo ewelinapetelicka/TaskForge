@@ -2,12 +2,14 @@ import {AppBar, Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Too
 import KeyboardCommandKeyIcon from '@mui/icons-material/KeyboardCommandKey';
 import {useNavigate} from "react-router-dom";
 import {useState, MouseEvent} from "react";
+import {useDispatch} from "react-redux";
+import {logoutUser} from "../../../store/user/user.slice";
 
 
 export function Header() {
-    const settings = ['Profile', 'Logout'];
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
@@ -17,11 +19,15 @@ export function Header() {
         setAnchorElUser(null);
     };
 
+    function logOut(){
+        dispatch(logoutUser());
+    }
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters sx={{display: "flex", justifyContent: "space-between"}}>
-                    <div style={{display:"flex", alignItems:"center"}} onClick={()=>navigate("/dashboard")}>
+                    <div style={{display: "flex", alignItems: "center"}} onClick={() => navigate("/dashboard")}>
                         <KeyboardCommandKeyIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} color="primary"
                                                 fontSize="large"/>
                         <Typography
@@ -61,11 +67,12 @@ export function Header() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center">Profile</Typography>
+                            </MenuItem>
+                            <MenuItem onClick={()=>logOut()}>
+                                <Typography textAlign="center">Logout</Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>

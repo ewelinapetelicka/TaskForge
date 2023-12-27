@@ -22,10 +22,15 @@ export const userSlice = createSlice({
             localStorage.setItem('user', JSON.stringify(state.user));
             localStorage.setItem("token", state.token);
         },
+        logoutUser : (state)=>{
+            state.user = null;
+            localStorage.clear();
+            state.token = null;
+        }
     },
 });
 
 export const selectUser = (state: RootState) => state.user.user;
 export const isUserLoggedIn = (state: RootState) => state.user.user !== null;
 
-export const { loginUser } = userSlice.actions
+export const { loginUser, logoutUser } = userSlice.actions;
