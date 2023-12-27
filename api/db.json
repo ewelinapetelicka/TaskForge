@@ -7,12 +7,12 @@
   ],
   "users": [
     {
-      "login": "admin",
-      "password": "123456",
+      "id": 1,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "admin@gmail.com"
     },{
-      "login": "random",
-      "password": "123456",
+      "id": 2,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com"
     }
   ]

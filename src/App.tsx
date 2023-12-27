@@ -4,6 +4,8 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Login} from "./pages/login/Login";
 import {useSelector} from "react-redux";
 import {isUserLoggedIn} from "./store/user/user.slice";
+import {ThemeProvider} from "@mui/material/styles";
+import {theme} from "./theme";
 
 const router = createBrowserRouter([
   {
