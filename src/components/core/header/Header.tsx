@@ -2,14 +2,14 @@ import {AppBar, Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Too
 import KeyboardCommandKeyIcon from '@mui/icons-material/KeyboardCommandKey';
 import {useNavigate} from "react-router-dom";
 import {useState, MouseEvent} from "react";
-import {useDispatch} from "react-redux";
-import {logoutUser} from "../../../store/user/user.slice";
-
+import {useDispatch, useSelector} from "react-redux";
+import {avatarUser, logoutUser} from "../../../store/user/user.slice";
 
 export function Header() {
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const avatar = useSelector(avatarUser);
 
     const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
@@ -27,7 +27,7 @@ export function Header() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters sx={{display: "flex", justifyContent: "space-between"}}>
-                    <div style={{display: "flex", alignItems: "center"}} onClick={() => navigate("/dashboard")}>
+                    <div style={{display: "flex", alignItems: "center", cursor:"pointer"}} onClick={() => navigate("/dashboard")}>
                         <KeyboardCommandKeyIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} color="primary"
                                                 fontSize="large"/>
                         <Typography
@@ -48,7 +48,7 @@ export function Header() {
                     <Box sx={{flexGrow: 0}}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                                <Avatar src={avatar}/>
                             </IconButton>
                         </Tooltip>
                         <Menu

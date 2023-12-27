@@ -32,5 +32,6 @@ export const userSlice = createSlice({
 
 export const selectUser = (state: RootState) => state.user.user;
 export const isUserLoggedIn = (state: RootState) => state.user.user !== null;
+export const avatarUser = (state:RootState)=> state.user.user!.avatar
 
 export const { loginUser, logoutUser } = userSlice.actions;
