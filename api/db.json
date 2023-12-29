@@ -1,21 +1,158 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+  "projects": [
+    {
+      "id": 1,
+      "title": "MoviePlex",
+      "description": "At MoviePlex, our team is at the forefront of reshaping how audiences experience the magic of the big screen. As part of the MoviePlex family, you'll be immersed in the exciting journey of developing an innovative cinema application. Collaborate with passionate professionals, contribute to cutting-edge features, and play a pivotal role in creating a platform that seamlessly connects movie enthusiasts with their favorite films. Join MoviePlex and be a driving force behind the evolution of cinematic engagement.",
+      "icon": "https://api.dicebear.com/7.x/icons/svg?seed=CameraReels"
+    },
+    {
+      "id": 2,
+      "title": "Forecastify",
+      "description": "Embark on a meteorological journey with Forecastify, where our team is dedicated to revolutionizing weather insights. As a key member of the Forecastify family, you'll contribute to shaping an innovative weather application that goes beyond forecasts. Collaborate with a dynamic team, harness state-of-the-art technologies, and play a vital role in creating a platform that delivers accurate, personalized, and insightful weather information. Join Forecastify and be part of transforming how individuals engage with and understand the ever-changing weather.",
+      "icon": "https://api.dicebear.com/7.x/icons/svg?seed=Spooky&scale=140&backgroundColor=80cbc4,90caf9,81d4fa,b6e3f4"
+    },
+    {
+      "id": 3,
+      "title": "PlantsApp",
+      "description": "PlantsApp, where we're cultivating a digital haven for plant enthusiasts worldwide. As a valued member of the Plants-App community, you'll be part of crafting an application that goes beyond being a digital garden—it's a thriving ecosystem connecting plant lovers. Collaborate with our passionate team, leverage innovative features, and contribute to a platform that fosters knowledge sharing, plant care tips, and a vibrant community spirit. Dive into the world of Plants-App and be instrumental in growing connections among plant enthusiasts.",
+      "icon": "https://api.dicebear.com/7.x/icons/svg?seed=Precious&scale=190&backgroundColor=9fa8da,a5d6a7,b39ddb,c5e1a5,ce93d8,e6ee9c,ef9a9a,f48fb1,ffab91,ffcc80,ffe082,80cbc4"
+    }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+  "projectsUsers": [
+    {
+      "id": 1,
+      "userId": 1,
+      "projectId": 1
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "projectId": 1
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "projectId": 1
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "projectId": 1
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "projectId": 2
+    },
+    {
+      "id": 6,
+      "userId": 6,
+      "projectId": 2
+    },
+    {
+      "id": 7,
+      "userId": 7,
+      "projectId": 2
+    },
+    {
+      "id": 8,
+      "userId": 8,
+      "projectId": 2
+    },
+    {
+      "id": 9,
+      "userId": 9,
+      "projectId": 3
+    },
+    {
+      "id": 10,
+      "userId": 10,
+      "projectId": 3
+    },
+    {
+      "id": 11,
+      "userId": 11,
+      "projectId": 3
+    },
+    {
+      "id": 12,
+      "userId": 12,
+      "projectId": 3
+    }
   ],
   "users": [
     {
       "id": 1,
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "admin@gmail.com",
-      "avatar": "https://randomuser.me/api/portraits/men/46.jpg"
-    },{
+      "avatar": "https://randomuser.me/api/portraits/women/46.jpg"
+    },
+    {
       "id": 2,
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/women/14.jpg"
+    },
+    {
+      "id": 3,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/women/28.jpg"
+    },
+    {
+      "id": 4,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/women/34.jpg"
+    },
+    {
+      "id": 5,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/women/4.jpg"
+    },
+    {
+      "id": 6,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/men/14.jpg"
+    },
+    {
+      "id": 7,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/men/24.jpg"
+    },
+    {
+      "id": 8,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/men/40.jpg"
+    },
+    {
+      "id": 9,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/men/34.jpg"
+    },
+    {
+      "id": 10,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/men/21.jpg"
+    },
+    {
+      "id": 11,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/men/7.jpg"
+    },
+    {
+      "id": 12,
+      "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
+      "email": "random@gmail.com",
+      "avatar": "https://randomuser.me/api/portraits/men/19.jpg"
     }
   ]
 }
