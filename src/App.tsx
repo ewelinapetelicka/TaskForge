@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {isUserLoggedIn} from "./store/user/user.slice";
 import {Dashboard} from "./pages/dashboard/Dashboard";
 import {Layout} from "./pages/layout/Layout";
+import {ProjectsDashboard} from "./pages/projects-dashboard/ProjectsDashboard";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
             {
                 path: 'dashboard',
                 element: <Dashboard/>,
+            },
+            {
+                path: 'project-dashboard',
+                element: <ProjectsDashboard/>
             }
         ]
     },
