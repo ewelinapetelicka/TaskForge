@@ -3,13 +3,13 @@ import KeyboardCommandKeyIcon from '@mui/icons-material/KeyboardCommandKey';
 import {useNavigate} from "react-router-dom";
 import {useState, MouseEvent} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {avatarUser, logoutUser} from "../../../store/user/user.slice";
+import {selectProfileAvatar, logoutUser} from "../../../store/user/user.slice";
 
 export function Header() {
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const avatar = useSelector(avatarUser);
+    const avatar = useSelector(selectProfileAvatar);
 
     const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);

@@ -3,35 +3,41 @@ import {User} from "../../models/user/user";
 import {RootState} from "../store";
 
 interface UserState {
-    user: User | null;
+    profile: User | null;
     token: string | null;
+    users: User[];
 }
 
 const initialState: UserState = {
-    user: JSON.parse(localStorage.getItem("user") || 'null'),
-    token: localStorage.getItem("token") || null
+    profile: JSON.parse(localStorage.getItem("profile") || 'null'),
+    token: localStorage.getItem("token") || null,
+    users: []
 }
 
 export const userSlice = createSlice({
     name: 'userSlice',
     initialState,
     reducers: {
-        loginUser: (state, action: PayloadAction<{user: User, accessToken: string}>) => {
-            state.user = action.payload.user;
+        loginUser: (state, action: PayloadAction<{ user: User, accessToken: string }>) => {
+            state.profile = action.payload.user;
             state.token = action.payload.accessToken;
-            localStorage.setItem('user', JSON.stringify(state.user));
+            localStorage.setItem('profile', JSON.stringify(state.profile));
             localStorage.setItem("token", state.token);
         },
-        logoutUser : (state)=>{
-            state.user = null;
+        logoutUser: (state) => {
+            state.profile = null;
             localStorage.clear();
             state.token = null;
+        },
+        setUsers: (state, action: PayloadAction<User[]>) => {
+            state.users = action.payload;
         }
     },
 });
 
-export const selectUser = (state: RootState) => state.user.user;
-export const isUserLoggedIn = (state: RootState) => state.user.user !== null;
-export const avatarUser = (state:RootState)=> state.user.user!.avatar
+export const selectUser = (state: RootState) => state.user.profile;
+export const selectIsLogged = (state: RootState) => state.user.profile !== null;
+export const selectProfileAvatar = (state: RootState) => state.user.profile!.avatar
+export const selectUsersByIds = (ids: number[]) => (state: RootState) => state.user.users.filter((el)=>ids.includes(el.id));
 
-export const { loginUser, logoutUser } = userSlice.actions;
+export const {loginUser, logoutUser, setUsers} = userSlice.actions;
