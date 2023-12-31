@@ -22,8 +22,8 @@ export function ProjectsDashboard() {
         <div>
             project dashboard
             <div style={{ display: "flex", flexWrap:"wrap", justifyContent:"space-evenly"}}>
-                {projects.map(p => (
-                <ProjectTile project={p}></ProjectTile>
+                {projects.map((p) => (
+                <ProjectTile project={p}  key={p.id}></ProjectTile>
             ))}
             </div>
         </div>

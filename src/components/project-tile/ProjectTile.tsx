@@ -8,14 +8,18 @@ export interface ProjectTileProps {
 }
 
 export function ProjectTile(props: ProjectTileProps) {
-    const users = useSelector(selectUsersByIds(props.project.userIds))
+    const users = useSelector(selectUsersByIds(props.project.userIds));
+
     return (
         <Card sx={{width: '30%', p: 2}}>
-            <h3>{props.project.title}</h3>
-            <p>{props.project.description}</p>
-            <AvatarGroup max={4}>
+            <div style={{display:'flex', alignItems:'center', gap:'1rem'}}>
+                <Avatar src={props.project.icon}></Avatar>
+                <h3>{props.project.title}</h3>
+            </div>
+            <p style={{opacity:0.6}}>{props.project.description}</p>
+            <AvatarGroup max={3}>
                 {users.map(user=>(
-                    <Avatar src={user.avatar}/>
+                    <Avatar src={user.avatar} key={user.id}/>
                 ))}
             </AvatarGroup>
         </Card>
