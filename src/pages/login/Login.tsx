@@ -3,12 +3,15 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {loginUser} from "../../store/user/user.slice";
 import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
+import {useSnackbar} from "notistack";
 
 export function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const http = useHttpClient();
+    const { enqueueSnackbar } = useSnackbar();
+
 
     function logIn() {
         http.post("login", {
@@ -16,7 +19,7 @@ export function Login() {
             email: email
         })
             .then((res) => dispatch(loginUser(res)))
-            .catch((err: Error) => console.log(err.message)) // TODO: handling error
+            .catch((err: Error) => enqueueSnackbar(err.message))
     }
 
     return (

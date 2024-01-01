@@ -2,13 +2,18 @@ import React, {useEffect} from 'react';
 import './App.css';
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import {Login} from "./pages/login/Login";
-import {useDispatch, useSelector} from "react-redux";
+import {Provider, useDispatch, useSelector} from "react-redux";
 import {selectIsLogged, setUsers} from "./store/user/user.slice";
 import {Dashboard} from "./pages/dashboard/Dashboard";
 import {Layout} from "./pages/layout/Layout";
 import {ProjectsDashboard} from "./pages/projects-dashboard/ProjectsDashboard";
 import {User} from "./models/user/user";
 import {useHttpClient} from "./hooks/use-http-client/use-http-client";
+import {store} from "./store/store";
+import {ThemeProvider} from "@mui/material/styles";
+import {theme} from "./theme";
+import {CssBaseline} from "@mui/material";
+import {SnackbarProvider} from "notistack";
 
 const router = createBrowserRouter([
     {
@@ -32,24 +37,14 @@ const router = createBrowserRouter([
 ]);
 
 export function App() {
-    const isLogged = useSelector(selectIsLogged);
-    const dispatch = useDispatch();
-    const http = useHttpClient();
-
-    useEffect(() => {
-        if (isLogged) {
-            getUsers();
-        }
-    }, [isLogged]);
-
-    function getUsers() {
-        http.get("users")
-            .then((users: User[]) => dispatch(setUsers(users)))
-    }
-
-    if (!isLogged) {
-        return <Login/>
-    }
-
-    return <RouterProvider router={router}/>;
+    return (
+        <ThemeProvider theme={theme}>
+            <SnackbarProvider>
+                <Provider store={store}>
+                    <CssBaseline/>
+                    <RouterProvider router={router}/>
+                </Provider>
+            </SnackbarProvider>
+        </ThemeProvider>
+    )
 }
