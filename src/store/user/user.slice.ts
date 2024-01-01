@@ -1,6 +1,7 @@
 import {createSelector, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {User} from "../../models/user/user";
 import {RootState} from "../store";
+import {useState} from "react";
 
 interface UserState {
     profile: User | null;
@@ -37,6 +38,7 @@ export const userSlice = createSlice({
 
 export const selectUser = (state: RootState) => state.user.profile;
 export const selectIsLogged = (state: RootState) => state.user.profile !== null;
+export const selectToken = (state: RootState) => state.user.token!;
 export const selectProfileAvatar = (state: RootState) => state.user.profile!.avatar;
 export const selectUsers = (state: RootState) => state.user.users;
 export const selectUsersByIds = (ids: number[]) => createSelector(

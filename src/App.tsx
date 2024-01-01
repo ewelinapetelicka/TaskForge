@@ -8,6 +8,7 @@ import {Dashboard} from "./pages/dashboard/Dashboard";
 import {Layout} from "./pages/layout/Layout";
 import {ProjectsDashboard} from "./pages/projects-dashboard/ProjectsDashboard";
 import {User} from "./models/user/user";
+import {useHttpClient} from "./hooks/use-http-client/use-http-client";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
 export function App() {
     const isLogged = useSelector(selectIsLogged);
     const dispatch = useDispatch();
+    const http = useHttpClient();
 
     useEffect(() => {
         if (isLogged) {
@@ -41,8 +43,7 @@ export function App() {
     }, [isLogged]);
 
     function getUsers() {
-        fetch("http://localhost:8000/users")
-            .then((res) => res.json())
+        http.get("users")
             .then((users: User[]) => dispatch(setUsers(users)))
     }
 

@@ -2,34 +2,22 @@ import {Box, Button, Card, CardContent, Grid, TextField, Typography} from "@mui/
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {loginUser} from "../../store/user/user.slice";
+import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 
 export function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
+    const http = useHttpClient();
 
     function logIn() {
-        fetch("http://localhost:8000/login", {
-            method: "POST",
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            } else {
-                throw new Error('')
-            }
-        }).then((res) => {
-            dispatch(loginUser(res))
-        }).catch(() => {
+        http.post("login", {
+            password: password,
+            email: email
         })
+            .then((res) => dispatch(loginUser(res)))
+            .catch((err: Error) => console.log(err.message)) // TODO: handling error
     }
-
 
     return (
         <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: "100vw", height: "100vh"}}>
