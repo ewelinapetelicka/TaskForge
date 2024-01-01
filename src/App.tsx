@@ -1,14 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
-import {Login} from "./pages/login/Login";
-import {Provider, useDispatch, useSelector} from "react-redux";
-import {selectIsLogged, setUsers} from "./store/user/user.slice";
+import {Provider} from "react-redux";
 import {Dashboard} from "./pages/dashboard/Dashboard";
 import {Layout} from "./pages/layout/Layout";
 import {ProjectsDashboard} from "./pages/projects-dashboard/ProjectsDashboard";
-import {User} from "./models/user/user";
-import {useHttpClient} from "./hooks/use-http-client/use-http-client";
 import {store} from "./store/store";
 import {ThemeProvider} from "@mui/material/styles";
 import {theme} from "./theme";

@@ -25,8 +25,7 @@ export function Header() {
 
     return (
         <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters sx={{display: "flex", justifyContent: "space-between"}}>
+                <Toolbar disableGutters sx={{ width:'100%', display: "flex", justifyContent: "space-between", pl:1, pr:2}}>
                     <div style={{display: "flex", alignItems: "center", cursor:"pointer"}} onClick={() => navigate("/dashboard")}>
                         <KeyboardCommandKeyIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} color="primary"
                                                 fontSize="large"/>
@@ -76,7 +75,6 @@ export function Header() {
                         </Menu>
                     </Box>
                 </Toolbar>
-            </Container>
         </AppBar>
     )
 }

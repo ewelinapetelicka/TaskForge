@@ -10,7 +10,7 @@ export function Login() {
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const http = useHttpClient();
-    const { enqueueSnackbar } = useSnackbar();
+    const {enqueueSnackbar} = useSnackbar();
 
 
     function logIn() {
@@ -25,16 +25,17 @@ export function Login() {
     return (
         <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: "100vw", height: "100vh"}}>
             <Card sx={{width: "40%", height: "40%"}}>
-                <CardContent sx={{display: 'flex', gap: "3"}}>
-                    <Grid container direction={'column'} gap={"4px"}>
-                        <Typography variant="h5" component="div">
-                            Login
-                        </Typography>
+                <CardContent sx={{display: 'flex', gap: "3", height:'100%'}}>
+                    <Grid
+                        sx={{width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+                        <Typography variant="h5" component="div">Login</Typography>
                         <TextField id="outlined-basic" label="Email" variant="outlined" value={email}
                                    onChange={(el) => setEmail(el.target.value)}/>
-                        <TextField id="outlined-basic" label="Password" variant="outlined" value={password}
+                        <TextField id="outlined-basic" label="Password" variant="outlined" value={password} type="password"
                                    onChange={(el) => setPassword(el.target.value)}/>
-                        <Button variant="contained" onClick={() => logIn()}>Login</Button>
+                        <div style={{width: '100%', display:'flex', justifyContent:'center'}}>
+                            <Button variant="contained" sx={{width: '40%'}} onClick={() => logIn()}>Login</Button>
+                        </div>
                     </Grid>
                 </CardContent>
             </Card>
