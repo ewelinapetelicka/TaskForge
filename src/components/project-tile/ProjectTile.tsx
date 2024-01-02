@@ -10,21 +10,23 @@ export interface ProjectTileProps {
 
 export function ProjectTile(props: ProjectTileProps) {
     const users = useSelector(selectUsersByIds(props.project.userIds));
-    const navigate= useNavigate();
+    const navigate = useNavigate();
 
     return (
         <Card sx={{width: '30%', p: 2}}>
-            <div style={{display:'flex', alignItems:'center', gap:'1rem'}}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
                 <Avatar src={props.project.icon}></Avatar>
                 <h3>{props.project.title}</h3>
             </div>
-            <p style={{opacity:0.6}}>{props.project.description}</p>
-            <AvatarGroup max={3}>
-                {users.map(user=>(
-                    <Avatar src={user.avatar} key={user.id}/>
-                ))}
-            </AvatarGroup>
-            <Button onClick={()=>navigate('/projects/' + props.project.id)}>MORE</Button>
+            <p style={{opacity: 0.6}}>{props.project.description}</p>
+            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', paddingRight:'2rem', paddingLeft:'2rem'}}>
+                <AvatarGroup max={3}>
+                    {users.map(user => (
+                        <Avatar src={user.avatar} key={user.id}/>
+                    ))}
+                </AvatarGroup>
+                <Button onClick={() => navigate('/projects/' + props.project.id + '/backlog')} variant={'outlined'}>MORE</Button>
+            </div>
         </Card>
     )
 }

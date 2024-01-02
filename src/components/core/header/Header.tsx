@@ -47,7 +47,7 @@ export function Header() {
                         </Typography>
                     </div>
                     <MenuItem onClick={() => navigate('/projects/dashboard')}>
-                        <Typography textAlign="center">Products</Typography>
+                        <Typography textAlign="center">Projects</Typography>
                     </MenuItem>
                 </div>
                 <Box sx={{flexGrow: 0}}>

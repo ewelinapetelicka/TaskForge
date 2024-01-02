@@ -10,8 +10,11 @@ import {ThemeProvider} from "@mui/material/styles";
 import {theme} from "./theme";
 import {CssBaseline} from "@mui/material";
 import {SnackbarProvider} from "notistack";
-import {ProjectDetailsPage} from "./pages/project-details-page/ProjectDetailsPage";
+import {ProjectLayoutPage} from "./pages/project-layout-page/ProjectLayoutPage";
 import {ProjectsLayoutPage} from "./pages/projects-layout-page/ProjectsLayoutPage";
+import {ProjectBacklogPage} from "./pages/project-backlog-page/ProjectBacklogPage";
+import {ProjectSettingsPage} from "./pages/project-settings-page/ProjectSettingsPage";
+import {ProjectTaskBrowserPage} from "./pages/project-task-browser-page/ProjectTaskBrowserPage";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +35,21 @@ const router = createBrowserRouter([
                     },
                     {
                         path: ':id',
-                        element:<ProjectDetailsPage/>
+                        element: <ProjectLayoutPage/>,
+                        children: [
+                            {
+                                path: 'backlog',
+                                element: <ProjectBacklogPage/>
+                            },
+                            {
+                                path:'settings',
+                                element: <ProjectSettingsPage/>
+                            },
+                            {
+                                path:'browser',
+                                element: <ProjectTaskBrowserPage/>
+                            }
+                        ]
                     }
                 ]
             }
