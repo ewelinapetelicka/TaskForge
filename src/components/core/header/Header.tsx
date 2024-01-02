@@ -27,24 +27,25 @@ export function Header() {
         <AppBar position="static">
             <Toolbar disableGutters
                      sx={{width: '100%', display: "flex", justifyContent: "space-between", pl: 1, pr: 2}}>
-                <div style={{display: "flex", alignItems: "center", cursor: "pointer"}}
-                     onClick={() => navigate("/dashboard")}>
-                    <KeyboardCommandKeyIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} color="primary"
-                                            fontSize="large"/>
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        sx={{
-                            mr: 2,
-                            display: {xs: 'none', md: 'flex'},
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        TaskForge
-                    </Typography>
+                <div style={{display: "flex", alignItems: "center", cursor: "pointer"}}>
+                    <div onClick={() => navigate("/dashboard")} style={{display: "flex", alignItems: "center", cursor: "pointer"}}>
+                        <KeyboardCommandKeyIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} color="primary"
+                                               fontSize="large"/>
+                        <Typography
+                            variant="h5"
+                            noWrap
+                            sx={{
+                                mr: 2,
+                                display: {xs: 'none', md: 'flex'},
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                letterSpacing: '.3rem',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            TaskForge
+                        </Typography>
+                    </div>
                     <MenuItem onClick={() => navigate('/project-dashboard')}>
                         <Typography textAlign="center">Products</Typography>
                     </MenuItem>

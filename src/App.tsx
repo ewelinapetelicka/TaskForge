@@ -8,7 +8,7 @@ import {ProjectsDashboard} from "./pages/projects-dashboard/ProjectsDashboard";
 import {store} from "./store/store";
 import {ThemeProvider} from "@mui/material/styles";
 import {theme} from "./theme";
-import {CssBaseline} from "@mui/material";
+import {Button, CssBaseline} from "@mui/material";
 import {SnackbarProvider} from "notistack";
 
 const router = createBrowserRouter([
