@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, Navigate, Outlet, RouterProvider} from "react-router-dom";
 import {Provider} from "react-redux";
 import {DashboardPage} from "./pages/dashboard-page/DashboardPage";
 import {LayoutPage} from "./pages/layout-page/LayoutPage";
@@ -10,6 +10,8 @@ import {ThemeProvider} from "@mui/material/styles";
 import {theme} from "./theme";
 import {CssBaseline} from "@mui/material";
 import {SnackbarProvider} from "notistack";
+import {ProjectDetailsPage} from "./pages/project-details-page/ProjectDetailsPage";
+import {ProjectsLayoutPage} from "./pages/projects-layout-page/ProjectsLayoutPage";
 
 const router = createBrowserRouter([
     {
@@ -17,21 +19,28 @@ const router = createBrowserRouter([
         element: <LayoutPage></LayoutPage>,
         children: [
             {
-                path: 'dashboard-page',
+                path: 'dashboard',
                 element: <DashboardPage/>,
             },
             {
-                path: 'project-dashboard-page',
-                element: <ProjectsDashboardPage/>
-            },
-            {
-                path:'project/:id'
+                path: 'projects',
+                element: <ProjectsLayoutPage></ProjectsLayoutPage>,
+                children: [
+                    {
+                        path: 'dashboard',
+                        element: <ProjectsDashboardPage/>
+                    },
+                    {
+                        path: ':id',
+                        element:<ProjectDetailsPage/>
+                    }
+                ]
             }
         ]
     },
     {
         path: '*',
-        element: <Navigate to={'/dashboard-page'}></Navigate>
+        element: <Navigate to={'/dashboard'}></Navigate>
     }
 ]);
 

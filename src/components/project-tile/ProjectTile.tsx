@@ -1,7 +1,8 @@
-import {Avatar, AvatarGroup, Card} from "@mui/material";
+import {Avatar, AvatarGroup, Button, Card} from "@mui/material";
 import {Project} from "../../models/project/project";
 import {useSelector} from "react-redux";
 import {selectUsersByIds} from "../../store/user/user.slice";
+import {useNavigate} from "react-router-dom";
 
 export interface ProjectTileProps {
     project: Project;
@@ -9,6 +10,7 @@ export interface ProjectTileProps {
 
 export function ProjectTile(props: ProjectTileProps) {
     const users = useSelector(selectUsersByIds(props.project.userIds));
+    const navigate= useNavigate();
 
     return (
         <Card sx={{width: '30%', p: 2}}>
@@ -22,6 +24,7 @@ export function ProjectTile(props: ProjectTileProps) {
                     <Avatar src={user.avatar} key={user.id}/>
                 ))}
             </AvatarGroup>
+            <Button onClick={()=>navigate('/projects/' + props.project.id)}>MORE</Button>
         </Card>
     )
 }

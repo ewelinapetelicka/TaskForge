@@ -28,7 +28,7 @@ export function Header() {
             <Toolbar disableGutters
                      sx={{width: '100%', display: "flex", justifyContent: "space-between", pl: 1, pr: 2}}>
                 <div style={{display: "flex", alignItems: "center", cursor: "pointer"}}>
-                    <div onClick={() => navigate("/dashboard-page")} style={{display: "flex", alignItems: "center", cursor: "pointer"}}>
+                    <div onClick={() => navigate("/dashboard")} style={{display: "flex", alignItems: "center", cursor: "pointer"}}>
                         <KeyboardCommandKeyIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} color="primary"
                                                fontSize="large"/>
                         <Typography
@@ -46,7 +46,7 @@ export function Header() {
                             TaskForge
                         </Typography>
                     </div>
-                    <MenuItem onClick={() => navigate('/project-dashboard-page')}>
+                    <MenuItem onClick={() => navigate('/projects/dashboard')}>
                         <Typography textAlign="center">Products</Typography>
                     </MenuItem>
                 </div>
