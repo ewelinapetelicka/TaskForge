@@ -5,9 +5,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectIsLogged, setUsers} from "../../store/user/user.slice";
 import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 import {User} from "../../models/user/user";
-import {Login} from "../login/Login";
+import {LoginPage} from "../login-page/LoginPage";
 
-export function Layout() {
+export function LayoutPage() {
     const location = useLocation();
     const isLogged = useSelector(selectIsLogged);
     const dispatch = useDispatch();
@@ -25,11 +25,11 @@ export function Layout() {
     }
 
     if (!isLogged) {
-        return <Login/>
+        return <LoginPage/>
     }
 
     if (location.pathname === "/") {
-        return <Navigate to={"/dashboard"}/>
+        return <Navigate to={"/dashboard-page"}/>
     }
 
     return (

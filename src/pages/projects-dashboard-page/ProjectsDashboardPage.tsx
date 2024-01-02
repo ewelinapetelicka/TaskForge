@@ -7,7 +7,7 @@ import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 import {Input, InputAdornment} from "@mui/material";
 import {Search} from "@mui/icons-material";
 
-export function ProjectsDashboard() {
+export function ProjectsDashboardPage() {
     const dispatch = useDispatch();
     const projects = useSelector(selectProjects);
     const httpClient = useHttpClient();

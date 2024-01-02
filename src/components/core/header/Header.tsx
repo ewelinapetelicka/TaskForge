@@ -1,9 +1,9 @@
-import {AppBar, Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography} from "@mui/material";
+import {AppBar, Avatar, Box, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography} from "@mui/material";
 import KeyboardCommandKeyIcon from '@mui/icons-material/KeyboardCommandKey';
 import {useNavigate} from "react-router-dom";
-import {useState, MouseEvent} from "react";
+import {MouseEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {selectProfileAvatar, logoutUser} from "../../../store/user/user.slice";
+import {logoutUser, selectProfileAvatar} from "../../../store/user/user.slice";
 
 export function Header() {
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -28,7 +28,7 @@ export function Header() {
             <Toolbar disableGutters
                      sx={{width: '100%', display: "flex", justifyContent: "space-between", pl: 1, pr: 2}}>
                 <div style={{display: "flex", alignItems: "center", cursor: "pointer"}}>
-                    <div onClick={() => navigate("/dashboard")} style={{display: "flex", alignItems: "center", cursor: "pointer"}}>
+                    <div onClick={() => navigate("/dashboard-page")} style={{display: "flex", alignItems: "center", cursor: "pointer"}}>
                         <KeyboardCommandKeyIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} color="primary"
                                                fontSize="large"/>
                         <Typography
@@ -46,7 +46,7 @@ export function Header() {
                             TaskForge
                         </Typography>
                     </div>
-                    <MenuItem onClick={() => navigate('/project-dashboard')}>
+                    <MenuItem onClick={() => navigate('/project-dashboard-page')}>
                         <Typography textAlign="center">Products</Typography>
                     </MenuItem>
                 </div>

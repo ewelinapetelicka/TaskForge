@@ -1,7 +1,6 @@
 import {createSelector, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {User} from "../../models/user/user";
 import {RootState} from "../store";
-import {useState} from "react";
 
 interface UserState {
     profile: User | null;

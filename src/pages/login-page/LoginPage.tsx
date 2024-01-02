@@ -5,7 +5,7 @@ import {loginUser} from "../../store/user/user.slice";
 import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 import {useSnackbar} from "notistack";
 
-export function Login() {
+export function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export function Login() {
 
 
     function logIn() {
-        http.post("login", {
+        http.post("login-page", {
             password: password,
             email: email
         })

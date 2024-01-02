@@ -2,33 +2,36 @@ import React from 'react';
 import './App.css';
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import {Provider} from "react-redux";
-import {Dashboard} from "./pages/dashboard/Dashboard";
-import {Layout} from "./pages/layout/Layout";
-import {ProjectsDashboard} from "./pages/projects-dashboard/ProjectsDashboard";
+import {DashboardPage} from "./pages/dashboard-page/DashboardPage";
+import {LayoutPage} from "./pages/layout-page/LayoutPage";
+import {ProjectsDashboardPage} from "./pages/projects-dashboard-page/ProjectsDashboardPage";
 import {store} from "./store/store";
 import {ThemeProvider} from "@mui/material/styles";
 import {theme} from "./theme";
-import {Button, CssBaseline} from "@mui/material";
+import {CssBaseline} from "@mui/material";
 import {SnackbarProvider} from "notistack";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout></Layout>,
+        element: <LayoutPage></LayoutPage>,
         children: [
             {
-                path: 'dashboard',
-                element: <Dashboard/>,
+                path: 'dashboard-page',
+                element: <DashboardPage/>,
             },
             {
-                path: 'project-dashboard',
-                element: <ProjectsDashboard/>
+                path: 'project-dashboard-page',
+                element: <ProjectsDashboardPage/>
+            },
+            {
+                path:'project/:id'
             }
         ]
     },
     {
         path: '*',
-        element: <Navigate to={'/dashboard'}></Navigate>
+        element: <Navigate to={'/dashboard-page'}></Navigate>
     }
 ]);
 

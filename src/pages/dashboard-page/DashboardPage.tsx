@@ -1,6 +1,6 @@
 import {Box} from "@mui/material";
 
-export function Dashboard(){
+export function DashboardPage(){
     return(
         <Box>
             test main page
