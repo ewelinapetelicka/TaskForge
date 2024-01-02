@@ -33,9 +33,11 @@ export function Layout() {
     }
 
     return (
-        <>
+        <div  style={{height: '100vh'}}>
             <Header/>
-            <Outlet/>
-        </>
+            <main style={{height:'calc(100% - 64px)'}}>
+                <Outlet/>
+            </main>
+        </div>
     )
 }
