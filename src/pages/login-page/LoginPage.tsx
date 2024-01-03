@@ -6,8 +6,8 @@ import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 import {useSnackbar} from "notistack";
 
 export function LoginPage() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("admin@gmail.com");
+    const [password, setPassword] = useState("123456");
     const dispatch = useDispatch();
     const http = useHttpClient();
     const {enqueueSnackbar} = useSnackbar();
@@ -30,7 +30,7 @@ export function LoginPage() {
                         sx={{width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
                         <Typography variant="h5" component="div">Login</Typography>
                         <TextField id="outlined-basic" label="Email" variant="outlined" value={email}
-                                   onChange={(el) => setEmail(el.target.value)}/>
+                                   onChange={(el) => setEmail(el.target.value)} />
                         <TextField id="outlined-basic" label="Password" variant="outlined" value={password} type="password"
                                    onChange={(el) => setPassword(el.target.value)}/>
                         <div style={{width: '100%', display:'flex', justifyContent:'center'}}>

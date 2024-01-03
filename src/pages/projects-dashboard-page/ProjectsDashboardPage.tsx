@@ -1,9 +1,8 @@
 import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {selectProjects, setProjects} from "../../store/projects/projects.slice";
+import {useSelector} from "react-redux";
+import {selectProjects} from "../../store/projects/projects.slice";
 import {ProjectTile} from "../../components/project-tile/ProjectTile";
 import {Project} from "../../models/project/project";
-import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 import {Input, InputAdornment} from "@mui/material";
 import {Search} from "@mui/icons-material";
 

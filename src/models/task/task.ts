@@ -1,5 +1,6 @@
 import {TaskType} from "./task-type/task-type";
 import {TaskStatus} from "./task-status/task-status";
+import {TaskPriority} from "./task-priority/task-priority";
 
 export interface Task {
     id: number;
@@ -8,6 +9,6 @@ export interface Task {
     status: TaskStatus;
     title: string;
     description: string;
-    priority: string;
+    priority: TaskPriority;
     userIds: number[];
 }

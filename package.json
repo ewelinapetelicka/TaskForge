@@ -30,7 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "backend": "json-server-auth --watch api/db.json -r api/routes.json  --port 8000"
+    "backend:no-auth": "json-server-auth --watch api/db.json --port 8000",
+    "backend:auth": "json-server-auth --watch api/db.json -r api/routes.json --port 8000"
   },
   "eslintConfig": {
     "extends": [
