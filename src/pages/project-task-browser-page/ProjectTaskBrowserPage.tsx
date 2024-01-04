@@ -1,5 +1,4 @@
 import {
-    Icon,
     Input,
     InputAdornment,
     Pagination,
@@ -8,10 +7,9 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TablePagination,
     TableRow
 } from "@mui/material";
-import {Circle, Search} from "@mui/icons-material";
+import {Search} from "@mui/icons-material";
 import Paper from '@mui/material/Paper';
 import {useDispatch, useSelector} from "react-redux";
 import {selectTasks, setTasks} from "../../store/tasks/tasks.slice";
@@ -19,9 +17,7 @@ import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 import {useParams} from "react-router-dom";
 import {Task} from "../../models/task/task";
 import React, {useEffect, useState} from "react";
-import {TaskType} from "../../models/task/task-type/task-type";
-import {Project} from "../../models/project/project";
-
+import {colorTypeTask} from "../../components/common/color-type-task/ColorTypeTask";
 
 export function ProjectTaskBrowserPage() {
     const tasks = useSelector(selectTasks);
@@ -40,18 +36,6 @@ export function ProjectTaskBrowserPage() {
     function getTasks() {
         http.get("project/" + params.id + "/tasks")
             .then((tasks: Task[]) => dispatch(setTasks(tasks)))
-    }
-
-    function colorType(task: string) {
-        if (task === TaskType.STORY) {
-            return <Circle color={"success"}></Circle>;
-        }
-        if (task === TaskType.BUG) {
-            return <Circle color={"error"}></Circle>;
-        }
-        if (task === TaskType.TECHNICAL_TASK) {
-            return <Circle color={"info"}></Circle>;
-        }
     }
 
     return (
@@ -83,7 +67,7 @@ export function ProjectTaskBrowserPage() {
                                 key={task.id}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
-                                <TableCell sx={{width: '20px'}}>{colorType(task.type)}</TableCell>
+                                <TableCell sx={{width: '20px'}}>{colorTypeTask(task.type)}</TableCell>
                                 <TableCell align='left'>
                                     {task.title}
                                 </TableCell>
