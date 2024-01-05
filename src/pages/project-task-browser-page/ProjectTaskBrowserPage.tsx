@@ -17,7 +17,7 @@ import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 import {useParams} from "react-router-dom";
 import {Task} from "../../models/task/task";
 import React, {useEffect, useState} from "react";
-import {colorTypeTask} from "../../components/common/color-type-task/ColorTypeTask";
+import {ColorTypeTask} from "../../components/common/color-type-task/ColorTypeTask";
 
 export function ProjectTaskBrowserPage() {
     const tasks = useSelector(selectTasks);
@@ -25,13 +25,17 @@ export function ProjectTaskBrowserPage() {
     const params = useParams();
     const dispatch = useDispatch();
     const [search, setSearch] = useState<string>("");
-    const [filteredTasks, setFilteredTasks] = useState<Task[]>([])
+    const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
+    const [page, setPage] = useState<number>(0);
 
 
     useEffect(() => {
         getTasks();
-        setFilteredTasks(tasks.filter((el)=> el.title.toLowerCase().includes(search.toLowerCase())));
-    }, [search,tasks]);
+        setFilteredTasks(
+            tasks.filter((el) => el.title.toLowerCase().includes(search.toLowerCase()))
+                .slice(page * 10, page * 10 + 10)
+        );
+    }, [search, tasks, page]);
 
     function getTasks() {
         http.get("project/" + params.id + "/tasks")
@@ -67,7 +71,7 @@ export function ProjectTaskBrowserPage() {
                                 key={task.id}
                                 sx={{'&:last-child td, &:last-child th': {border: 0}}}
                             >
-                                <TableCell sx={{width: '20px'}}>{colorTypeTask(task.type)}</TableCell>
+                                <TableCell sx={{width: '20px'}}>{ColorTypeTask(task.type)}</TableCell>
                                 <TableCell align='left'>
                                     {task.title}
                                 </TableCell>
@@ -78,7 +82,8 @@ export function ProjectTaskBrowserPage() {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Pagination count={filteredTasks.length / 10} variant="outlined" color="secondary"/>
+            <Pagination count={Math.ceil(tasks.length / 10)} onChange={(event, page) => setPage(page - 1)} variant="outlined"
+                        color="secondary"/>
         </div>
     )
 }

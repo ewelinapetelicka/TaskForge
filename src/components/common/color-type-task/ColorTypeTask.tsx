@@ -2,7 +2,7 @@ import {TaskType} from "../../../models/task/task-type/task-type";
 import {Circle} from "@mui/icons-material";
 import React from "react";
 
-export function colorTypeTask(task: string) {
+export function ColorTypeTask(task: string) {
     if (task === TaskType.STORY) {
         return <Circle color={"success"}></Circle>;
     }
