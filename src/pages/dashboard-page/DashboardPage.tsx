@@ -1,9 +1,9 @@
-import {Box} from "@mui/material";
+import {Card} from "primereact/card";
 
 export function DashboardPage(){
     return(
-        <Box>
+        <Card>
             test main page
-        </Box>
+        </Card>
     )
 }

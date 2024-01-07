@@ -6,15 +6,15 @@ import {DashboardPage} from "./pages/dashboard-page/DashboardPage";
 import {LayoutPage} from "./pages/layout-page/LayoutPage";
 import {ProjectsDashboardPage} from "./pages/projects-dashboard-page/ProjectsDashboardPage";
 import {store} from "./store/store";
-import {ThemeProvider} from "@mui/material/styles";
-import {theme} from "./theme";
-import {CssBaseline} from "@mui/material";
 import {SnackbarProvider} from "notistack";
 import {ProjectLayoutPage} from "./pages/project-layout-page/ProjectLayoutPage";
 import {ProjectsLayoutPage} from "./pages/projects-layout-page/ProjectsLayoutPage";
 import {ProjectBacklogPage} from "./pages/project-backlog-page/ProjectBacklogPage";
 import {ProjectSettingsPage} from "./pages/project-settings-page/ProjectSettingsPage";
 import {ProjectTaskBrowserPage} from "./pages/project-task-browser-page/ProjectTaskBrowserPage";
+
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+
 
 const router = createBrowserRouter([
     {
@@ -63,13 +63,12 @@ const router = createBrowserRouter([
 
 export function App() {
     return (
-        <ThemeProvider theme={theme}>
+        <PrimeReactProvider>
             <SnackbarProvider>
                 <Provider store={store}>
-                    <CssBaseline/>
                     <RouterProvider router={router}/>
                 </Provider>
             </SnackbarProvider>
-        </ThemeProvider>
+        </PrimeReactProvider>
     )
 }

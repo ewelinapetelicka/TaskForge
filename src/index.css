@@ -2,6 +2,10 @@
 @import '@fontsource/roboto/400.css';
 @import '@fontsource/roboto/500.css';
 @import '@fontsource/roboto/700.css';
+@import "primereact/resources/themes/lara-dark-teal/theme.css";
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+
 
 body {
   margin: 0;

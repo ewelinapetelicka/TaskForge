@@ -1,9 +1,11 @@
-import {Box, Button, Card, CardContent, Grid, TextField, Typography} from "@mui/material";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {loginUser} from "../../store/user/user.slice";
 import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
 import {useSnackbar} from "notistack";
+import {Card} from "primereact/card";
+import {InputText} from "primereact/inputtext";
+import {Button} from "primereact/button";
 
 export function LoginPage() {
     const [email, setEmail] = useState("admin@gmail.com");
@@ -23,22 +25,19 @@ export function LoginPage() {
     }
 
     return (
-        <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: "100vw", height: "100vh"}}>
-            <Card sx={{width: "40%", height: "40%"}}>
-                <CardContent sx={{display: 'flex', gap: "3", height:'100%'}}>
-                    <Grid
-                        sx={{width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
-                        <Typography variant="h5" component="div">Login</Typography>
-                        <TextField id="outlined-basic" label="Email" variant="outlined" value={email}
-                                   onChange={(el) => setEmail(el.target.value)} />
-                        <TextField id="outlined-basic" label="Password" variant="outlined" value={password} type="password"
-                                   onChange={(el) => setPassword(el.target.value)}/>
-                        <div style={{width: '100%', display:'flex', justifyContent:'center'}}>
-                            <Button variant="contained" sx={{width: '40%'}} onClick={() => logIn()}>Login</Button>
-                        </div>
-                    </Grid>
-                </CardContent>
+        <div className="flex justify-content-center align-items-center w-screen h-screen">
+            <Card className="w-5">
+                <div className="w-12 h-12 flex flex-column justify-content-center gap-3 p-0">
+                    <h2 className="pl-2">Login</h2>
+                    <InputText id="outlined-basic" placeholder="Email" value={email}
+                               onChange={(el) => setEmail(el.target.value)}/>
+                    <InputText id="outlined-basic" placeholder="Password" value={password} type="password"
+                               onChange={(el) => setPassword(el.target.value)}/>
+                    <div className="flex justify-content-center w-full pt-4">
+                        <Button className="w-4 flex justify-content-center" onClick={() => logIn()}>Login</Button>
+                    </div>
+                </div>
             </Card>
-        </Box>
+        </div>
     )
 }

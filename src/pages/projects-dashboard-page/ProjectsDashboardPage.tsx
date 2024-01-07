@@ -3,8 +3,7 @@ import {useSelector} from "react-redux";
 import {selectProjects} from "../../store/projects/projects.slice";
 import {ProjectTile} from "../../components/project-tile/ProjectTile";
 import {Project} from "../../models/project/project";
-import {Input, InputAdornment} from "@mui/material";
-import {Search} from "@mui/icons-material";
+import {InputText} from "primereact/inputtext";
 
 export function ProjectsDashboardPage() {
     const projects = useSelector(selectProjects);
@@ -16,21 +15,16 @@ export function ProjectsDashboardPage() {
     }, [search, projects]);
 
     return (
-        <div style={{width: '100%', height: '100%'}}>
-            <div style={{width: '100%', display: 'flex', justifyContent: 'end', padding: '1rem', paddingRight: '5rem'}}>
-                <Input
-                    id="input-with-icon-adornment"
-                    onChange={(e) => setSearch(e.target.value)}
-                    startAdornment={
-                        <InputAdornment position="start">
-                            <Search/>
-                        </InputAdornment>
-                    }
-                />
+        <div className="w-full h-full">
+            <div className="w-full flex justify-content-end p-2 pr-6">
+                <span className="p-input-icon-left" >
+                    <i className="pi pi-search"/>
+                    <InputText placeholder="Search" onChange={(e) => setSearch(e.target.value)}/>
+                </span>
             </div>
-            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-evenly"}}>
+            <div className="flex flex-wrap justify-content-evenly ">
                 {filteredProjects.map((p) => (
-                    <ProjectTile project={p} key={p.id} ></ProjectTile>
+                    <ProjectTile project={p} key={p.id}></ProjectTile>
                 ))}
             </div>
         </div>

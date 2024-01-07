@@ -35,7 +35,7 @@ export function LayoutPage() {
     return (
         <div  style={{height: '100vh'}}>
             <Header/>
-            <main style={{height:'calc(100% - 64px)'}}>
+            <main style={{height:'calc(100% - 87px)'}}>
                 <Outlet/>
             </main>
         </div>
