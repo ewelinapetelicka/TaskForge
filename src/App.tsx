@@ -2,16 +2,16 @@ import React from 'react';
 import './App.css';
 import {createBrowserRouter, Navigate, Outlet, RouterProvider} from "react-router-dom";
 import {Provider} from "react-redux";
-import {DashboardPage} from "./pages/dashboard-page/DashboardPage";
+import {DashboardPage} from "./modules/dashboard/pages/dashboard-page/DashboardPage";
 import {LayoutPage} from "./pages/layout-page/LayoutPage";
-import {ProjectsDashboardPage} from "./pages/projects-dashboard-page/ProjectsDashboardPage";
+import {ProjectsDashboardPage} from "./modules/projects/pages/projects-dashboard-page/ProjectsDashboardPage";
 import {store} from "./store/store";
 import {SnackbarProvider} from "notistack";
-import {ProjectLayoutPage} from "./pages/project-layout-page/ProjectLayoutPage";
-import {ProjectsLayoutPage} from "./pages/projects-layout-page/ProjectsLayoutPage";
-import {ProjectBacklogPage} from "./pages/project-backlog-page/ProjectBacklogPage";
-import {ProjectSettingsPage} from "./pages/project-settings-page/ProjectSettingsPage";
-import {ProjectTaskBrowserPage} from "./pages/project-task-browser-page/ProjectTaskBrowserPage";
+import {ProjectLayoutPage} from "./modules/projects/pages/project-layout-page/ProjectLayoutPage";
+import {ProjectsLayoutPage} from "./modules/projects/pages/projects-layout-page/ProjectsLayoutPage";
+import {ProjectBacklogPage} from "./modules/projects/pages/project-backlog-page/ProjectBacklogPage";
+import {ProjectSettingsPage} from "./modules/projects/pages/project-settings-page/ProjectSettingsPage";
+import {ProjectTaskBrowserPage} from "./modules/projects/pages/project-task-browser-page/ProjectTaskBrowserPage";
 
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 

@@ -1,4 +1,4 @@
-import {TaskType} from "../../../models/task/task-type/task-type";
+import {TaskType} from "../../models/task/task-type/task-type";
 import React from "react";
 import {Badge} from "primereact/badge";
 

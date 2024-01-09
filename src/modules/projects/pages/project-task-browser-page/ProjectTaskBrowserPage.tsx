@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import {selectTasks, setTasks} from "../../store/tasks/tasks.slice";
-import {useHttpClient} from "../../hooks/use-http-client/use-http-client";
+import {selectTasks, setTasks} from "../../../../store/tasks/tasks.slice";
+import {useHttpClient} from "../../../../hooks/use-http-client/use-http-client";
 import {useParams} from "react-router-dom";
 import {Task} from "../../models/task/task";
 import React, {useEffect, useState} from "react";
@@ -8,10 +8,10 @@ import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
 import {InputText} from "primereact/inputtext";
 import {FilterMatchMode} from "primereact/api";
-import {TaskTypeIndicator} from "../../components/common/task-type-indicator/TaskTypeIndicator";
+import {TaskTypeIndicator} from "../../components/task-type-indicator/TaskTypeIndicator";
 import {Card} from "primereact/card";
-import {TaskPriorityIndicator} from "../../components/common/task-priority-indicator/TaskPriorityIndicator";
-import {TaskStatusIndicator} from "../../components/common/task-status-indicator/TaskStatusIndicator";
+import {TaskPriorityIndicator} from "../../components/task-priority-indicator/TaskPriorityIndicator";
+import {TaskStatusIndicator} from "../../components/task-status-indicator/TaskStatusIndicator";
 import {TaskStatus} from "../../models/task/task-status/task-status";
 
 export function ProjectTaskBrowserPage() {

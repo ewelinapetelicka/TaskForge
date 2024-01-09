@@ -1,4 +1,4 @@
-import {TaskStatus} from "../../../models/task/task-status/task-status";
+import {TaskStatus} from "../../models/task/task-status/task-status";
 import {Badge} from "primereact/badge";
 
 export interface TaskStatusIndicatorProps {

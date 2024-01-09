@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Project} from "../../models/project/project";
+import {Project} from "../../modules/projects/models/project/project";
 import {RootState} from "../store";
 
 interface ProjectsState {

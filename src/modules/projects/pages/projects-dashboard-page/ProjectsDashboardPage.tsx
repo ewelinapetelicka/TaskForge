@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {selectProjects} from "../../store/projects/projects.slice";
+import {selectProjects} from "../../../../store/projects/projects.slice";
 import {ProjectTile} from "../../components/project-tile/ProjectTile";
 import {Project} from "../../models/project/project";
 import {InputText} from "primereact/inputtext";

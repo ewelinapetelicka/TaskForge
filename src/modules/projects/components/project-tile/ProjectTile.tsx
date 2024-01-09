@@ -1,6 +1,6 @@
 import {Project} from "../../models/project/project";
 import {useSelector} from "react-redux";
-import {selectUsersByIds} from "../../store/user/user.slice";
+import {selectUsersByIds} from "../../../../store/user/user.slice";
 import {useNavigate} from "react-router-dom";
 import {Card} from "primereact/card";
 import {Avatar} from "primereact/avatar";

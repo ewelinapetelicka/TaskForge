@@ -1,4 +1,4 @@
-import {TaskPriority} from "../../../models/task/task-priority/task-priority";
+import {TaskPriority} from "../../models/task/task-priority/task-priority";
 import React from "react";
 
 export interface TaskPriorityIndicatorProps {
