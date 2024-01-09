@@ -8,6 +8,11 @@ import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
 import {InputText} from "primereact/inputtext";
 import {FilterMatchMode} from "primereact/api";
+import {TaskTypeIndicator} from "../../components/common/task-type-indicator/TaskTypeIndicator";
+import {Card} from "primereact/card";
+import {TaskPriorityIndicator} from "../../components/common/task-priority-indicator/TaskPriorityIndicator";
+import {TaskStatusIndicator} from "../../components/common/task-status-indicator/TaskStatusIndicator";
+import {TaskStatus} from "../../models/task/task-status/task-status";
 
 export function ProjectTaskBrowserPage() {
     const tasks = useSelector(selectTasks);
@@ -15,12 +20,12 @@ export function ProjectTaskBrowserPage() {
     const params = useParams();
     const dispatch = useDispatch();
     const [filters, setFilters] = useState({
-        global: { value: "", matchMode: FilterMatchMode.CONTAINS }
+        global: {value: "", matchMode: FilterMatchMode.CONTAINS}
     });
 
-    const onGlobalFilterChange = (value:string) => {
+    const onGlobalFilterChange = (value: string) => {
         setFilters({
-            global: { value: value, matchMode: FilterMatchMode.CONTAINS }
+            global: {value: value, matchMode: FilterMatchMode.CONTAINS}
         });
     };
 
@@ -34,17 +39,29 @@ export function ProjectTaskBrowserPage() {
     }
 
     return (
-        <div className="pt-5">
-            <span className="p-input-icon-left">
-                <i className="pi pi-search"/>
-                <InputText value={filters.global.value} onChange={(e) => onGlobalFilterChange(e.target.value)} placeholder="Keyword Search"/>
-            </span>
-            <DataTable value={tasks} paginator rows={10} filters={filters}>
-                <Column field="type" header="Type" sortable/>
-                <Column field="title" header="Title" sortable/>
-                <Column field="priority" header="Priority" sortable/>
-                <Column field="status" header="Status" sortable/>
-            </DataTable>
+        <div className="h-full flex justify-content-center align-items-start pt-4">
+            <Card className=" flex flex-column gap-4 w-full">
+                <div className={" flex w-full justify-content-end pb-2"}>
+                    <div className="p-input-icon-left">
+                        <i className="pi pi-search"/>
+                        <InputText value={filters.global.value} onChange={(e) => onGlobalFilterChange(e.target.value)}
+                                   placeholder="Search..."/>
+                    </div>
+                </div>
+                <DataTable value={tasks} paginator rows={9} filters={filters} paginatorClassName={"border-none"}>
+                    <Column field="type" header="Type" align={"center"}
+                            body={(data: Task) => <TaskTypeIndicator taskType={data.type}/>}
+                            sortable/>
+                    <Column field="title" header="Title" sortable body={(data: Task) => {
+                        return <span
+                            className={data.status === TaskStatus.DONE ? "line-through" : ""}>{data.title}</span>
+                    }}/>
+                    <Column field="priority" header="Priority" align={"center"} className={"p-0"}
+                            body={(data: Task) => <TaskPriorityIndicator taskPriority={data.priority}/>} sortable/>
+                    <Column field="status" header="Status" align={"center"} sortable
+                            body={(data: Task) => <TaskStatusIndicator taskStatus={data.status}/>}/>
+                </DataTable>
+            </Card>
         </div>
     )
 }

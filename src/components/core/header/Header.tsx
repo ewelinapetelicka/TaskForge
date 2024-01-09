@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {logoutUser, selectProfileAvatar} from "../../../store/user/user.slice";
@@ -12,6 +12,7 @@ export function Header() {
     const dispatch = useDispatch();
     const avatar = useSelector(selectProfileAvatar);
     const menuRight = useRef<Menu>(null);
+    const location = useLocation();
 
     const menuItems = [{
         label: 'Profile',
@@ -31,10 +32,12 @@ export function Header() {
                               <i className="pi pi-box" style={{fontSize: '30px', color: 'var(--primary-color)', rotate: '180deg'}}></i>
                               <h2>TaskForge</h2>
                           </div>
-                          <h4 className="flex align-items-center w-full cursor-pointer"
+                          <Button text
+                                  severity={location.pathname.includes('/projects') ? undefined : 'secondary'}
+                                  className="flex align-items-center w-full cursor-pointer"
                               onClick={() => navigate('/projects/dashboard')}>
                               Projects
-                          </h4>
+                          </Button>
                       </div>
                   )
                   }

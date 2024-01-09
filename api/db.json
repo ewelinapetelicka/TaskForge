@@ -119,7 +119,7 @@
       "status": "TO_DO",
       "title": "User Profile Page",
       "description": "Create a user profile page where users can view and update their plant-related information.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         9
       ]
@@ -131,7 +131,7 @@
       "status": "IN_PROGRESS",
       "title": "Incorrect Watering Notifications",
       "description": "Fix the bug causing users to receive incorrect watering notifications for their plants.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         10
       ]
@@ -143,7 +143,7 @@
       "status": "TO_DO",
       "title": "Implement Plant Image Upload",
       "description": "Add functionality for users to upload images of their plants to the PlantApp.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         11,
         9
@@ -153,10 +153,10 @@
       "id": 4,
       "projectId": 3,
       "type": "STORY",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Plant Care Tips Section",
       "description": "Integrate a section in the app to provide users with helpful tips for caring for their plants.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         9,
         12
@@ -169,7 +169,7 @@
       "status": "DONE",
       "title": "Crash on Plant Details Page",
       "description": "Resolve the bug causing the app to crash when viewing detailed information about a specific plant.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         9,
         10
@@ -182,7 +182,7 @@
       "status": "IN_PROGRESS",
       "title": "Database Schema Optimization",
       "description": "Optimize the database schema for better performance and scalability.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         11,
         12
@@ -195,7 +195,7 @@
       "status": "TO_DO",
       "title": "Plant Wishlist Feature",
       "description": "Implement a feature that allows users to create and manage a wishlist of plants they want to acquire.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         8
       ]
@@ -204,10 +204,10 @@
       "id": 8,
       "projectId": 3,
       "type": "BUG",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Incorrect Plant Height Calculation",
       "description": "Fix the bug causing incorrect calculation of plant height in the app.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         9,
         11
@@ -220,7 +220,7 @@
       "status": "TO_DO",
       "title": "Implement Push Notifications",
       "description": "Integrate push notifications to alert users about important plant care activities.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         10,
         12
@@ -233,7 +233,7 @@
       "status": "IN_PROGRESS",
       "title": "Dark Mode Support",
       "description": "Add support for dark mode to enhance user experience during low-light conditions.",
-      "priority": "LOW",
+      "priority": 0,
       "userIds": [
         9
       ]
@@ -245,7 +245,7 @@
       "status": "DONE",
       "title": "Incorrect Watering Log Entry",
       "description": "Fix the bug causing incorrect entries in the watering log for users' plants.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         10
       ]
@@ -257,7 +257,7 @@
       "status": "TO_DO",
       "title": "Implement User Authentication",
       "description": "Integrate user authentication to secure user data and enhance app privacy.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         12
       ]
@@ -266,10 +266,10 @@
       "id": 13,
       "projectId": 3,
       "type": "STORY",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Community Forum Section",
       "description": "Create a forum section where users can discuss and share their plant-related experiences.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         11
       ]
@@ -281,7 +281,7 @@
       "status": "IN_PROGRESS",
       "title": "Slow Loading Plant Images",
       "description": "Address the bug causing slow loading times for plant images in the app.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         10,
         12
@@ -294,7 +294,7 @@
       "status": "TO_DO",
       "title": "Implement Plant Classification Feature",
       "description": "Integrate a feature to automatically classify plants based on user-submitted images.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         10
       ]
@@ -306,7 +306,7 @@
       "status": "DONE",
       "title": "Plant Growth Tracker",
       "description": "Develop a feature that allows users to track the growth progress of their plants over time.",
-      "priority": "LOW",
+      "priority": 0,
       "userIds": [
         8,
         9
@@ -319,7 +319,7 @@
       "status": "TO_DO",
       "title": "Incorrect Sunlight Recommendations",
       "description": "Fix the bug causing inaccurate sunlight recommendations for certain plant species.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         12
       ]
@@ -331,7 +331,7 @@
       "status": "IN_PROGRESS",
       "title": "Server Performance Monitoring",
       "description": "Set up monitoring tools to track and optimize server performance for the PlantApp backend.",
-      "priority": "LOW",
+      "priority": 0,
       "usersIds": [
         11
       ]
@@ -343,7 +343,7 @@
       "status": "TO_DO",
       "title": "Movie Listings Page",
       "description": "Create a page to display the latest movie listings with details such as showtimes and trailers.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         1,
         2
@@ -356,7 +356,7 @@
       "status": "IN_PROGRESS",
       "title": "Ticket Booking Error",
       "description": "Fix the bug causing errors during the ticket booking process for certain movies.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         3
       ]
@@ -368,7 +368,7 @@
       "status": "TO_DO",
       "title": "Integrate Payment Gateway",
       "description": "Implement a secure payment gateway for users to purchase movie tickets online.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         1
       ]
@@ -377,10 +377,10 @@
       "id": 22,
       "projectId": 1,
       "type": "STORY",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "User Profile Management",
       "description": "Develop a section for users to manage their profiles and view their booking history.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         4
       ]
@@ -392,7 +392,7 @@
       "status": "DONE",
       "title": "Incorrect Movie Ratings Display",
       "description": "Fix the bug causing incorrect display of movie ratings on the application interface.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         1,
         2,
@@ -406,7 +406,7 @@
       "status": "IN_PROGRESS",
       "title": "Database Performance Optimization",
       "description": "Optimize database queries for improved performance in handling movie-related data.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         2,
         3,
@@ -420,7 +420,7 @@
       "status": "TO_DO",
       "title": "Movie Recommendations Feature",
       "description": "Implement a feature that provides personalized movie recommendations based on user preferences.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         4
       ]
@@ -429,10 +429,10 @@
       "id": 26,
       "projectId": 1,
       "type": "BUG",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Booking Confirmation Email Issue",
       "description": "Fix the bug causing issues with the delivery of booking confirmation emails to users.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         3
       ]
@@ -444,7 +444,7 @@
       "status": "TO_DO",
       "title": "Implement Seat Selection Feature",
       "description": "Add functionality for users to select and reserve specific seats when booking movie tickets.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         1,
         2
@@ -457,7 +457,7 @@
       "status": "IN_PROGRESS",
       "title": "Mobile App Compatibility",
       "description": "Optimize the MoviePlex application for a seamless experience on mobile devices.",
-      "priority": "LOW",
+      "priority": 0,
       "userIds": [
         4
       ]
@@ -469,7 +469,7 @@
       "status": "DONE",
       "title": "Movie Details Page Crashes",
       "description": "Resolve the bug causing the application to crash when viewing detailed information about a specific movie.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         1,
         3
@@ -482,7 +482,7 @@
       "status": "TO_DO",
       "title": "User Authentication Enhancement",
       "description": "Enhance user authentication methods to ensure secure access to user accounts.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         2,
         4
@@ -492,10 +492,10 @@
       "id": 31,
       "projectId": 1,
       "type": "STORY",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Movie Review Section",
       "description": "Create a section where users can read and submit reviews for movies they have watched.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         4
       ]
@@ -507,7 +507,7 @@
       "status": "IN_PROGRESS",
       "title": "Slow Loading Movie Trailers",
       "description": "Address the bug causing slow loading times for movie trailers in the application.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         2,
         4
@@ -520,7 +520,7 @@
       "status": "TO_DO",
       "title": "Implement Movie Genre Filtering",
       "description": "Allow users to filter movie listings based on genres for a more customized experience.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         1
       ]
@@ -532,7 +532,7 @@
       "status": "DONE",
       "title": "Movie Favorites List",
       "description": "Develop a feature that allows users to create and manage a list of their favorite movies.",
-      "priority": "LOW",
+      "priority": 0,
       "userIds": [
         2,
         4
@@ -545,7 +545,7 @@
       "status": "TO_DO",
       "title": "Incorrect Release Dates",
       "description": "Fix the bug causing incorrect display of movie release dates on the application.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         1,
         4
@@ -558,7 +558,7 @@
       "status": "TO_DO",
       "title": "Weather Dashboard",
       "description": "Develop a user-friendly weather dashboard to display current conditions and forecasts.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         5,
         6,
@@ -573,7 +573,7 @@
       "status": "IN_PROGRESS",
       "title": "Incorrect Temperature Display",
       "description": "Fix the bug causing incorrect display of temperatures for certain locations.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         6,
         7,
@@ -587,7 +587,7 @@
       "status": "TO_DO",
       "title": "API Integration",
       "description": "Integrate weather data API to fetch accurate and up-to-date information for Forecastify.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         5,
         8
@@ -597,10 +597,10 @@
       "id": 39,
       "projectId": 2,
       "type": "STORY",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Hourly Forecast Feature",
       "description": "Implement a feature to provide users with hourly forecasts for the next 24 hours.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         7,
         8
@@ -613,7 +613,7 @@
       "status": "DONE",
       "title": "Map Overlay Issue",
       "description": "Resolve the bug causing issues with the map overlay when viewing weather patterns.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         5,
         6,
@@ -627,7 +627,7 @@
       "status": "IN_PROGRESS",
       "title": "Optimize Data Storage",
       "description": "Optimize the storage of weather data for improved application performance.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         8
       ]
@@ -639,7 +639,7 @@
       "status": "TO_DO",
       "title": "Weather Notifications",
       "description": "Implement push notifications to alert users about significant weather changes.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         5,
         8
@@ -649,10 +649,10 @@
       "id": 43,
       "projectId": 2,
       "type": "BUG",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Sunset Time Display Issue",
       "description": "Fix the bug causing incorrect display of sunset times for certain locations.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         7
       ]
@@ -664,7 +664,7 @@
       "status": "TO_DO",
       "title": "User Authentication",
       "description": "Implement secure user authentication methods for Forecastify.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         5,
         6
@@ -677,7 +677,7 @@
       "status": "IN_PROGRESS",
       "title": "Multiple Location Support",
       "description": "Allow users to add and track weather forecasts for multiple locations.",
-      "priority": "LOW",
+      "priority": 0,
       "userIds": [
         8
       ]
@@ -689,7 +689,7 @@
       "status": "DONE",
       "title": "Wind Speed Calculation Error",
       "description": "Resolve the bug causing errors in the calculation of wind speeds for certain locations.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         5,
         7
@@ -702,7 +702,7 @@
       "status": "TO_DO",
       "title": "Accessibility Features",
       "description": "Implement features to improve accessibility for users with disabilities.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         8
       ]
@@ -711,10 +711,10 @@
       "id": 48,
       "projectId": 2,
       "type": "STORY",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Weather Trends Graph",
       "description": "Create a graphical representation of weather trends over a specified period.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         6,
         8
@@ -727,7 +727,7 @@
       "status": "IN_PROGRESS",
       "title": "Rainfall Data Accuracy",
       "description": "Address the bug causing inaccuracies in rainfall data for specific regions.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         7
       ]
@@ -739,7 +739,7 @@
       "status": "TO_DO",
       "title": "Data Encryption",
       "description": "Implement encryption methods to secure weather data stored in the Forecastify database.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         5
       ]
@@ -751,7 +751,7 @@
       "status": "IN_PROGRESS",
       "title": "Weather Widget",
       "description": "Develop a widget for users to view real-time weather information on their device home screens.",
-      "priority": "LOW",
+      "priority": 0,
       "userIds": [
         7,
         8
@@ -764,7 +764,7 @@
       "status": "DONE",
       "title": "Temperature Unit Display Issue",
       "description": "Resolve the bug causing issues with the display of temperature units in the application.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         8
       ]
@@ -776,7 +776,7 @@
       "status": "TO_DO",
       "title": "Forecast Accuracy Analysis",
       "description": "Conduct an analysis to improve the accuracy of weather forecasts provided by Forecastify.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         7,
         8
@@ -786,10 +786,10 @@
       "id": 54,
       "projectId": 2,
       "type": "STORY",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "title": "Weather API Version Update",
       "description": "Update the application to use the latest version of the weather data API.",
-      "priority": "MEDIUM",
+      "priority": 1,
       "userIds": [
         6
       ]
@@ -801,7 +801,7 @@
       "status": "IN_PROGRESS",
       "title": "Humidity Percentage Bug",
       "description": "Fix the bug causing inaccuracies in the display of humidity percentages for specific locations.",
-      "priority": "HIGH",
+      "priority": 2,
       "userIds": [
         7
       ]

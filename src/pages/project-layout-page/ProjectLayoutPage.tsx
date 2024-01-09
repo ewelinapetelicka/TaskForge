@@ -28,15 +28,15 @@ export function ProjectLayoutPage() {
 
     return (
         <div className="w-full h-full flex">
-            <div className={"w-4 h-full"}>
+            <div className={"w-3 h-full "}>
                 <ListBox value={selectedIndex}
                          onChange={(e) => setSelectedIndex(e.value)}
                          options={menuOptions}
                          optionLabel="name"
                          optionValue="index"
-                         className="w-full md:w-14rem"/>
+                         className="w-full h-full"/>
             </div>
-            <div className={"w-8 h-full justify-content-center"}>
+            <div className={"w-9 h-full justify-content-center ml-4 mr-4"}>
                 <Outlet></Outlet>
             </div>
         </div>
