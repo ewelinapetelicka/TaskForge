@@ -40,72 +40,84 @@
   "users": [
     {
       "id": 1,
+      "name": "Jena Brington",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "admin@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/women/46.jpg"
     },
     {
       "id": 2,
+      "name": "Alice Johnson",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/women/14.jpg"
     },
     {
       "id": 3,
+      "name": "Mandy Smith",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/women/28.jpg"
     },
     {
       "id": 4,
+      "name": "Emma Taylor",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/women/34.jpg"
     },
     {
       "id": 5,
+      "name": "Olivia Anderson",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/women/4.jpg"
     },
     {
       "id": 6,
+      "name": "Daniel Brown",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/men/14.jpg"
     },
     {
       "id": 7,
+      "name": "James Williams",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/men/24.jpg"
     },
     {
       "id": 8,
+      "name": "Matthew Turner",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/men/40.jpg"
     },
     {
       "id": 9,
+      "name": "Ron Davis",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/men/34.jpg"
     },
     {
       "id": 10,
+      "name": "Ethan Moore",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/men/21.jpg"
     },
     {
       "id": 11,
+      "name": "Carl Taylor",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/men/7.jpg"
     },
     {
       "id": 12,
+      "name": "Mason Wilson",
       "password": "$2a$12$RYbQUUCQmPXEU0fCfLA2UOR1GoT36D01f/d5Qz4mZwB4DDSJJLK42",
       "email": "random@gmail.com",
       "avatar": "https://randomuser.me/api/portraits/men/19.jpg"

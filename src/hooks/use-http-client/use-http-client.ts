@@ -34,6 +34,15 @@ export function useHttpClient() {
                 },
                 body: JSON.stringify(body)
             }).then((res) => handleResponse(res))
-        }
+        },
+        patch:(endpoint:string, body:any) =>{
+            return fetch('http://localhost:8000/'+ endpoint,{
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify(body)
+            }).then((res) => handleResponse(res))
     }
-}
+}}

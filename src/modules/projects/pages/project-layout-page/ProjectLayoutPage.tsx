@@ -1,9 +1,14 @@
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect} from "react";
 import {ListBox} from "primereact/listbox";
+import {TaskDetailsModal} from "../../modals/task-details-modal/TaskDetailsModal";
+import {useSelector} from "react-redux";
+import {selectIsTaskDetailOpen} from "../../../../store/tasks/tasks.slice";
 
 export function ProjectLayoutPage() {
     const [selectedIndex, setSelectedIndex] = React.useState(-1);
+    const visible = useSelector(selectIsTaskDetailOpen);
+
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -11,8 +16,6 @@ export function ProjectLayoutPage() {
         const index = menuOptions.find(option => location.pathname.includes(option.path))!.index;
         setSelectedIndex(index);
     }, []);
-
-
 
         useEffect(() => {
         if(selectedIndex !== -1){
@@ -39,6 +42,7 @@ export function ProjectLayoutPage() {
             <div className={"w-9 h-full justify-content-center ml-4 mr-4"}>
                 <Outlet></Outlet>
             </div>
+            {visible && <TaskDetailsModal></TaskDetailsModal>}
         </div>
     )
 }

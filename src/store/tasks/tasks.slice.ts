@@ -3,11 +3,13 @@ import {Task} from "../../modules/projects/models/task/task";
 import {RootState} from "../store";
 
 interface TasksState {
-    tasks: Task[]
+    tasks: Task[];
+    taskDetail: Task | null;
 }
 
 const initialState: TasksState = {
-    tasks: []
+    tasks: [],
+    taskDetail: null
 }
 
 export const tasksSlice = createSlice({
@@ -16,9 +18,17 @@ export const tasksSlice = createSlice({
     reducers: {
         setTasks: (state, action: PayloadAction<Task[]>) => {
             state.tasks = action.payload;
+        },
+        openDetailsTask:(state, action: PayloadAction<Task>) => {
+            state.taskDetail = action.payload;
+        },
+        closeDetailsTask: (state) => {
+            state.taskDetail = null;
         }
     }
 });
 
-export const selectTasks = (state: RootState) => state.tasks.tasks
-export const {setTasks} = tasksSlice.actions;
+export const selectTasks = (state: RootState) => state.tasks.tasks;
+export const selectTaskDetail = (state: RootState) => state.tasks.taskDetail as Task;
+export const selectIsTaskDetailOpen = (state: RootState) => state.tasks.taskDetail !== null;
+export const {setTasks, openDetailsTask, closeDetailsTask} = tasksSlice.actions;

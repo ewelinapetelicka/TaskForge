@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {createBrowserRouter, Navigate, Outlet, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import {Provider} from "react-redux";
 import {DashboardPage} from "./modules/dashboard/pages/dashboard-page/DashboardPage";
 import {LayoutPage} from "./pages/layout-page/LayoutPage";
@@ -13,7 +13,7 @@ import {ProjectBacklogPage} from "./modules/projects/pages/project-backlog-page/
 import {ProjectSettingsPage} from "./modules/projects/pages/project-settings-page/ProjectSettingsPage";
 import {ProjectTaskBrowserPage} from "./modules/projects/pages/project-task-browser-page/ProjectTaskBrowserPage";
 
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import {PrimeReactProvider} from 'primereact/api';
 
 
 const router = createBrowserRouter([

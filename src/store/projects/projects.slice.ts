@@ -16,10 +16,19 @@ export const projectsSlice = createSlice({
     reducers: {
         setProjects:(state, action: PayloadAction<Project[]>)=>{
             state.projects = action.payload;
+        },
+        setProjectById:(state, action: PayloadAction<Project>)=>{
+            state.projects = state.projects.map((el)=>{
+                if(el.id === action.payload.id){
+                    return action.payload;
+                }
+                return el;
+            })
         }
     }
 });
 
 export const selectProjects = (state: RootState)=> state.projects.projects;
+export const selectProjectById = (id: number) => (state: RootState) => state.projects.projects.find((el)=> el.id === id)!;
 
-export const { setProjects} = projectsSlice.actions;
+export const { setProjects, setProjectById} = projectsSlice.actions;

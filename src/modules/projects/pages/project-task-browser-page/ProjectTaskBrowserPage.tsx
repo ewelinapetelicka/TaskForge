@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
-import {selectTasks, setTasks} from "../../../../store/tasks/tasks.slice";
+import {openDetailsTask, selectTasks, setTasks} from "../../../../store/tasks/tasks.slice";
 import {useHttpClient} from "../../../../hooks/use-http-client/use-http-client";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {Task} from "../../models/task/task";
 import React, {useEffect, useState} from "react";
 import {DataTable} from "primereact/datatable";
@@ -13,6 +13,7 @@ import {Card} from "primereact/card";
 import {TaskPriorityIndicator} from "../../components/task-priority-indicator/TaskPriorityIndicator";
 import {TaskStatusIndicator} from "../../components/task-status-indicator/TaskStatusIndicator";
 import {TaskStatus} from "../../models/task/task-status/task-status";
+import {Button} from "primereact/button";
 
 export function ProjectTaskBrowserPage() {
     const tasks = useSelector(selectTasks);
@@ -53,8 +54,13 @@ export function ProjectTaskBrowserPage() {
                             body={(data: Task) => <TaskTypeIndicator taskType={data.type}/>}
                             sortable/>
                     <Column field="title" header="Title" sortable body={(data: Task) => {
-                        return <span
-                            className={data.status === TaskStatus.DONE ? "line-through" : ""}>{data.title}</span>
+                        return(
+                            <Button
+                                onClick={() =>dispatch(openDetailsTask(data))} text rounded
+                          className={data.status === TaskStatus.DONE ? "line-through" : ""}>
+                          {data.title}
+                      </Button>
+                        )
                     }}/>
                     <Column field="priority" header="Priority" align={"center"} className={"p-0"}
                             body={(data: Task) => <TaskPriorityIndicator taskPriority={data.priority}/>} sortable/>
