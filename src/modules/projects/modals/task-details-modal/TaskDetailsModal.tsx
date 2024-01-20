@@ -16,19 +16,26 @@ import {taskPriorityOptions} from "../../const/task-priority-options";
 import {taskStatusOptions} from "../../const/task-status-options";
 import {taskTypeOptions} from "../../const/task-type-options";
 import {User} from "../../../../models/user/user";
+import {useSnackbar} from "notistack";
 
 export function TaskDetailsModal() {
     const task = useSelector(selectTaskDetail);
     const [newTask, setNewTask] = useState({...task});
+    const [requestIsPending, setRequestIsPending] = useState(false);
     const dispatch = useDispatch();
     const http = useHttpClient();
     const project = useSelector(selectProjectById(task.projectId));
     const assignee = useSelector(selectUsersByIds(newTask.userIds));
     const projectUsers = useSelector(selectUsersByIds(project.userIds))
+    const {enqueueSnackbar} = useSnackbar();
 
 
     function saveChangesInTask() {
-        http.patch("tasks/"+ newTask.id, newTask)
+        setRequestIsPending(true);
+        http.patch("tasks/" + newTask.id, newTask).then(() => {
+            dispatch(closeDetailsTask());
+            enqueueSnackbar(newTask.title + ' has been edited successfully');
+        })
     }
 
     return (
@@ -47,36 +54,25 @@ export function TaskDetailsModal() {
                         </InputTextarea>
                         <label>Task description</label>
                     </div>
-                    <div className="flex gap-4">
-                        <div className="card flex justify-content-center">
-                            <MultiSelect value={assignee}
-                                         options={projectUsers}
-                                         itemTemplate={(el) => {
-                                             return (
-                                                 <div className="flex align-items-center gap-2">
-                                                     <span>{el.name}</span>
-                                                     <Avatar image={el.avatar} shape={"circle"}></Avatar>
-                                                 </div>
-                                             )
-                                         }}
-                                         optionLabel="name"
-                                         placeholder="Search profile"
-                                         className="w-full md:w-20rem"
-                                         display="chip"
-                                         onChange={(e) => setNewTask({
-                                             ...newTask,
-                                             userIds: e.target.value.map((user: User) => user.id)
-                                         })}/>
-                        </div>
-                        <div className="flex gap-4 align-items-center">
-                            <span>Assigned to:</span>
-                            {assignee.map(user => (
-                                <>
-                                    <Avatar image={user.avatar} key={user.id} shape={"circle"} size={'large'}/>
-                                    <p>{user.name}</p>
-                                </>
-                            ))}
-                        </div>
+                    <div className="card flex justify-content-center">
+                        <MultiSelect value={assignee}
+                                     options={projectUsers}
+                                     itemTemplate={(el) => {
+                                         return (
+                                             <div className="flex align-items-center gap-2">
+                                                 <span>{el.name}</span>
+                                                 <Avatar image={el.avatar} shape={"circle"}></Avatar>
+                                             </div>
+                                         )
+                                     }}
+                                     optionLabel="name"
+                                     placeholder="Search profile"
+                                     className="w-full "
+                                     display="chip"
+                                     onChange={(e) => setNewTask({
+                                         ...newTask,
+                                         userIds: e.target.value.map((user: User) => user.id)
+                                     })}/>
                     </div>
                     <div className="flex flex-wrap flex-column">
                         <h4>Task priority:</h4>
@@ -118,7 +114,10 @@ export function TaskDetailsModal() {
                         </div>
                     </div>
                     <div className="w-12 flex justify-content-center">
-                        <Button className="w-1 flex justify-content-center" onClick={()=> saveChangesInTask()}>SAVE</Button>
+                        <Button loading={requestIsPending}
+                                label={"SAVE"}
+                                onClick={() => saveChangesInTask()}>
+                        </Button>
                     </div>
                 </div>
             </Card>

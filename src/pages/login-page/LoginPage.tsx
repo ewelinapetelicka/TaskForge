@@ -14,7 +14,6 @@ export function LoginPage() {
     const http = useHttpClient();
     const {enqueueSnackbar} = useSnackbar();
 
-
     function logIn() {
         http.post("login-page", {
             password: password,

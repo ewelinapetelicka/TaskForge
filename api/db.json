@@ -355,7 +355,7 @@
       "status": "TO_DO",
       "title": "Movie Listings Page",
       "description": "Create a page to display the latest movie listings with details such as showtimes and trailers.",
-      "priority": 2,
+      "priority": 0,
       "userIds": [
         1,
         2
