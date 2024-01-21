@@ -35,8 +35,8 @@ export function useHttpClient() {
                 body: JSON.stringify(body)
             }).then((res) => handleResponse(res))
         },
-        patch:(endpoint:string, body:any) =>{
-            return fetch('http://localhost:8000/'+ endpoint,{
+        patch: (endpoint: string, body: any) => {
+            return fetch('http://localhost:8000/' + endpoint, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -44,5 +44,15 @@ export function useHttpClient() {
                 },
                 body: JSON.stringify(body)
             }).then((res) => handleResponse(res))
+        },
+        delete: (endpoint: string) => {
+            return fetch('http://localhost:8000/' + endpoint, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': 'Bearer ' + token
+                }
+            }).then((res) => handleResponse(res))
+        }
     }
-}}
+}

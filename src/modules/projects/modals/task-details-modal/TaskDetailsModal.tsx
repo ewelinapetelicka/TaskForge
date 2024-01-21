@@ -1,13 +1,17 @@
 import {Dialog} from "primereact/dialog";
 import {useDispatch, useSelector} from "react-redux";
-import {closeDetailsTask, selectTaskDetail} from "../../../../store/tasks/tasks.slice";
-import {InputTextarea} from "primereact/inputtextarea";
+import {
+    addTask,
+    closeDetailsTask,
+    editTask,
+    removeTaskById,
+    selectTaskDetail
+} from "../../../../store/tasks/tasks.slice";
 import {useState} from "react";
 import {RadioButton} from "primereact/radiobutton";
 import {Avatar} from "primereact/avatar";
 import {selectUsersByIds} from "../../../../store/user/user.slice";
 import {InputText} from "primereact/inputtext";
-import {Card} from "primereact/card";
 import {selectProjectById} from "../../../../store/projects/projects.slice";
 import {Button} from "primereact/button";
 import {useHttpClient} from "../../../../hooks/use-http-client/use-http-client";
@@ -17,6 +21,7 @@ import {taskStatusOptions} from "../../const/task-status-options";
 import {taskTypeOptions} from "../../const/task-type-options";
 import {User} from "../../../../models/user/user";
 import {useSnackbar} from "notistack";
+import {Editor} from "primereact/editor";
 
 export function TaskDetailsModal() {
     const task = useSelector(selectTaskDetail);
@@ -28,99 +33,123 @@ export function TaskDetailsModal() {
     const assignee = useSelector(selectUsersByIds(newTask.userIds));
     const projectUsers = useSelector(selectUsersByIds(project.userIds))
     const {enqueueSnackbar} = useSnackbar();
-
+    const [isEditing] = useState(!!task.id)
 
     function saveChangesInTask() {
         setRequestIsPending(true);
         http.patch("tasks/" + newTask.id, newTask).then(() => {
             dispatch(closeDetailsTask());
             enqueueSnackbar(newTask.title + ' has been edited successfully');
+            dispatch(editTask(newTask));
+        })
+    }
+
+    function addNewTask() {
+        http.post("tasks", newTask).then(() => {
+            dispatch(closeDetailsTask());
+            enqueueSnackbar("New task added");
+            dispatch(addTask(newTask));
+        })
+    }
+
+    function deleteTask() {
+        http.delete("tasks/" + task.id).then(() => {
+            dispatch(closeDetailsTask());
+            enqueueSnackbar('Task has been deleted');
+            dispatch(removeTaskById(task.id))
         })
     }
 
     return (
-        <Dialog header={"Edit task"} visible={true} style={{width: '80vw', height: '90vh'}}
+        <Dialog header={
+            <InputText value={newTask.title} className={"w-12"}
+                       placeholder={"Add task title..."}
+                       onChange={(e) => setNewTask({...newTask, title: e.target.value})}/>
+        }
+                visible={true} style={{width: '80vw'}}
                 onHide={() => dispatch(closeDetailsTask())}>
-            <Card>
-                <div className="flex flex-column w-12 h-full gap-3">
-                    <div className="p-float-label mt-4">
-                        <InputText className="m-0 w-12" value={newTask.title}
-                                   onChange={(e) => setNewTask({...newTask, title: e.target.value})}></InputText>
-                        <label>Task title</label>
+            <div className={"w-12 flex gap-3"}>
+                <Editor value={newTask.description}
+                        onTextChange={(value) => setNewTask({...newTask, description: value.htmlValue!})}
+                        className={"w-8"}
+                        style={{height: '400px'}}/>
+                <div className={"flex flex-column w-4 gap-3"}>
+                    <p>Task assignee:</p>
+                    <MultiSelect value={assignee}
+                                 options={projectUsers}
+                                 itemTemplate={(el) => {
+                                     return (
+                                         <div className="flex align-items-center gap-2 ">
+                                             <span>{el.name}</span>
+                                             <Avatar image={el.avatar} shape={"circle"}></Avatar>
+                                         </div>
+                                     )
+                                 }}
+                                 optionLabel="name"
+                                 placeholder="Search profile"
+                                 className="w-full "
+                                 display="chip"
+                                 onChange={(e) => setNewTask({
+                                     ...newTask,
+                                     userIds: e.target.value.map((user: User) => user.id)
+                                 })}/>
+                    <p>Task priority:</p>
+                    <div className="flex gap-3">
+                        {taskPriorityOptions.map(option => (
+                            <div className="flex align-items-center">
+                                <RadioButton name={option.label} value={option.value}
+                                             onChange={(e) => setNewTask({
+                                                 ...newTask,
+                                                 priority: e.target.value
+                                             })}
+                                             checked={newTask.priority === option.value}/>
+                                <label className="ml-2">{option.label}</label>
+                            </div>
+                        ))}
                     </div>
-                    <div className="p-float-label mt-4">
-                        <InputTextarea className="m-0 w-12" value={newTask.description}
-                                       onChange={(e) => setNewTask({...newTask, description: e.target.value})}>
-                        </InputTextarea>
-                        <label>Task description</label>
+                    <p>Task status:</p>
+                    <div className="flex gap-3">
+                        {taskStatusOptions.map(option => (
+                            <div className="flex align-items-center">
+                                <RadioButton name={option.label} value={option.value}
+                                             onChange={(e) => setNewTask({...newTask, status: e.target.value})}
+                                             checked={newTask.status === option.value}/>
+                                <label className="ml-2">{option.label}</label>
+                            </div>
+                        ))}
                     </div>
-                    <div className="card flex justify-content-center">
-                        <MultiSelect value={assignee}
-                                     options={projectUsers}
-                                     itemTemplate={(el) => {
-                                         return (
-                                             <div className="flex align-items-center gap-2">
-                                                 <span>{el.name}</span>
-                                                 <Avatar image={el.avatar} shape={"circle"}></Avatar>
-                                             </div>
-                                         )
-                                     }}
-                                     optionLabel="name"
-                                     placeholder="Search profile"
-                                     className="w-full "
-                                     display="chip"
-                                     onChange={(e) => setNewTask({
-                                         ...newTask,
-                                         userIds: e.target.value.map((user: User) => user.id)
-                                     })}/>
-                    </div>
-                    <div className="flex flex-wrap flex-column">
-                        <h4>Task priority:</h4>
-                        <div className="flex gap-3">
-                            {taskPriorityOptions.map(option => (
-                                <div className="flex align-items-center">
-                                    <RadioButton name={option.label} value={option.value}
-                                                 onChange={(e) => setNewTask({...newTask, priority: e.target.value})}
-                                                 checked={newTask.priority === option.value}/>
-                                    <label className="ml-2">{option.label}</label>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="flex flex-wrap flex-column">
-                        <h4>Task status:</h4>
-                        <div className="flex gap-3">
-                            {taskStatusOptions.map(option => (
-                                <div className="flex align-items-center">
-                                    <RadioButton name={option.label} value={option.value}
-                                                 onChange={(e) => setNewTask({...newTask, status: e.target.value})}
-                                                 checked={newTask.status === option.value}/>
-                                    <label className="ml-2">{option.label}</label>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="flex flex-wrap flex-column">
-                        <h4>Task type:</h4>
-                        <div className="flex gap-3">
-                            {taskTypeOptions.map(option => (
-                                <div className="flex align-items-center">
-                                    <RadioButton name={option.label} value={option.value}
-                                                 onChange={(e) => setNewTask({...newTask, type: e.target.value})}
-                                                 checked={newTask.type === option.value}/>
-                                    <label className="ml-2">{option.label}</label>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="w-12 flex justify-content-center">
-                        <Button loading={requestIsPending}
-                                label={"SAVE"}
-                                onClick={() => saveChangesInTask()}>
-                        </Button>
+                    <p>Task type:</p>
+                    <div className="flex gap-3">
+                        {taskTypeOptions.map(option => (
+                            <div className="flex align-items-center">
+                                <RadioButton name={option.label} value={option.value}
+                                             onChange={(e) => setNewTask({...newTask, type: e.target.value})}
+                                             checked={newTask.type === option.value}/>
+                                <label className="ml-2">{option.label}</label>
+                            </div>
+                        ))}
                     </div>
                 </div>
-            </Card>
+            </div>
+            {isEditing ? (
+                <div className="w-12 flex justify-content-between gap-8 mt-3 ">
+                    <Button label={"DELETE"}
+                            severity={"danger"}
+                            text
+                            onClick={() => deleteTask()}>
+                    </Button>
+                    <Button loading={requestIsPending}
+                            label={"SAVE"}
+                            onClick={() => saveChangesInTask()}>
+                    </Button>
+                </div>
+            ) : (
+                <div className="w-12 flex justify-content-end gap-8 mt-3 ">
+                    <Button label={"ADD NEW"} className={"align-self-end"}
+                            onClick={() => addNewTask()}>
+                    </Button>
+                </div>
+            )}
         </Dialog>
     )
 }

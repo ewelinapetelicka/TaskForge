@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {openDetailsTask, selectTasks, setTasks} from "../../../../store/tasks/tasks.slice";
 import {useHttpClient} from "../../../../hooks/use-http-client/use-http-client";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {Task} from "../../models/task/task";
 import React, {useEffect, useState} from "react";
 import {DataTable} from "primereact/datatable";
@@ -14,6 +14,8 @@ import {TaskPriorityIndicator} from "../../components/task-priority-indicator/Ta
 import {TaskStatusIndicator} from "../../components/task-status-indicator/TaskStatusIndicator";
 import {TaskStatus} from "../../models/task/task-status/task-status";
 import {Button} from "primereact/button";
+import {TaskPriority} from "../../models/task/task-priority/task-priority";
+import {TaskType} from "../../models/task/task-type/task-type";
 
 export function ProjectTaskBrowserPage() {
     const tasks = useSelector(selectTasks);
@@ -39,27 +41,42 @@ export function ProjectTaskBrowserPage() {
             .then((tasks: Task[]) => dispatch(setTasks(tasks)))
     }
 
+    function openTaskModal() {
+        dispatch(openDetailsTask({
+            id: null as any,
+            title: '',
+            description: "Add task description...",
+            projectId: parseInt(params.id!),
+            status: TaskStatus.TO_DO,
+            priority: TaskPriority.LOW,
+            type: TaskType.STORY,
+            userIds: []
+        }))
+    }
+
     return (
-        <div className="h-full flex justify-content-center align-items-start pt-4">
-            <Card className=" flex flex-column gap-4 w-full">
-                <div className={" flex w-full justify-content-end pb-2"}>
+        <div className="h-full flex justify-content-center align-items-center">
+            <Card className=" flex flex-column gap-6 w-full">
+                <div className={" flex w-full justify-content-between pb-2"}>
+                    <Button label={"ADD NEW"} outlined onClick={() => openTaskModal()}></Button>
                     <div className="p-input-icon-left">
                         <i className="pi pi-search"/>
                         <InputText value={filters.global.value} onChange={(e) => onGlobalFilterChange(e.target.value)}
                                    placeholder="Search..."/>
                     </div>
                 </div>
-                <DataTable value={tasks} paginator rows={9} filters={filters} paginatorClassName={"border-none"}>
+                <DataTable value={tasks} paginator rows={8} filters={filters} paginatorClassName={"border-none"}
+                           size={"small"}>
                     <Column field="type" header="Type" align={"center"}
                             body={(data: Task) => <TaskTypeIndicator taskType={data.type}/>}
                             sortable/>
                     <Column field="title" header="Title" sortable body={(data: Task) => {
-                        return(
+                        return (
                             <Button
-                                onClick={() =>dispatch(openDetailsTask(data))} text rounded
-                          className={data.status === TaskStatus.DONE ? "line-through" : ""}>
-                          {data.title}
-                      </Button>
+                                onClick={() => dispatch(openDetailsTask(data))} text rounded
+                                className={data.status === TaskStatus.DONE ? "line-through" : ""}>
+                                {data.title}
+                            </Button>
                         )
                     }}/>
                     <Column field="priority" header="Priority" align={"center"} className={"p-0"}

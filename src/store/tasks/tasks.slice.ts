@@ -19,7 +19,21 @@ export const tasksSlice = createSlice({
         setTasks: (state, action: PayloadAction<Task[]>) => {
             state.tasks = action.payload;
         },
-        openDetailsTask:(state, action: PayloadAction<Task>) => {
+        removeTaskById: (state, action: PayloadAction<number>) => {
+            state.tasks = state.tasks.filter((el) => el.id !== action.payload)
+        },
+        addTask: (state, action: PayloadAction<Task>) => {
+            state.tasks.push(action.payload);
+        },
+        editTask: (state, action: PayloadAction<Task>) => {
+            state.tasks = state.tasks.map((el) => {
+                if (el.id === action.payload.id) {
+                    return action.payload;
+                }
+                return el;
+            });
+        },
+        openDetailsTask: (state, action: PayloadAction<Task>) => {
             state.taskDetail = action.payload;
         },
         closeDetailsTask: (state) => {
@@ -31,4 +45,4 @@ export const tasksSlice = createSlice({
 export const selectTasks = (state: RootState) => state.tasks.tasks;
 export const selectTaskDetail = (state: RootState) => state.tasks.taskDetail as Task;
 export const selectIsTaskDetailOpen = (state: RootState) => state.tasks.taskDetail !== null;
-export const {setTasks, openDetailsTask, closeDetailsTask} = tasksSlice.actions;
+export const {setTasks, openDetailsTask, closeDetailsTask, removeTaskById, addTask, editTask} = tasksSlice.actions;
