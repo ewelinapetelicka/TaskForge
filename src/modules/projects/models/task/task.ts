@@ -11,4 +11,5 @@ export interface Task {
     description: string;
     priority: TaskPriority;
     userIds: number[];
+    sprintId?: number;
 }

@@ -58,7 +58,7 @@ export function TaskDetailsModal() {
         http.delete("tasks/" + task.id).then(() => {
             dispatch(closeDetailsTask());
             enqueueSnackbar('Task has been deleted');
-            dispatch(removeTaskById(task.id))
+            dispatch(removeTaskById(task.id));
         })
     }
 
