@@ -22,10 +22,12 @@ import {taskTypeOptions} from "../../const/task-type-options";
 import {User} from "../../../../models/user/user";
 import {useSnackbar} from "notistack";
 import {Editor} from "primereact/editor";
+import {ConfirmModal} from "../../../../components/confirm-modal/ConfirmModal";
 
 export function TaskDetailsModal() {
     const task = useSelector(selectTaskDetail);
     const [newTask, setNewTask] = useState({...task});
+    const [description, setDescription] = useState(task.description)
     const [requestIsPending, setRequestIsPending] = useState(false);
     const dispatch = useDispatch();
     const http = useHttpClient();
@@ -37,7 +39,7 @@ export function TaskDetailsModal() {
 
     function saveChangesInTask() {
         setRequestIsPending(true);
-        http.patch("tasks/" + newTask.id, newTask).then(() => {
+        http.patch("tasks/" + newTask.id, {...newTask, description}).then(() => {
             dispatch(closeDetailsTask());
             enqueueSnackbar(newTask.title + ' has been edited successfully');
             dispatch(editTask(newTask));
@@ -45,7 +47,7 @@ export function TaskDetailsModal() {
     }
 
     function addNewTask() {
-        http.post("tasks", newTask).then(() => {
+        http.post("tasks", {...newTask, description}).then(() => {
             dispatch(closeDetailsTask());
             enqueueSnackbar("New task added");
             dispatch(addTask(newTask));
@@ -69,8 +71,8 @@ export function TaskDetailsModal() {
                 visible={true} style={{width: '80vw'}}
                 onHide={() => dispatch(closeDetailsTask())}>
             <div className={"w-12 flex gap-3"}>
-                <Editor value={newTask.description}
-                        onTextChange={(value) => setNewTask({...newTask, description: value.htmlValue!})}
+                <Editor value={description}
+                        onTextChange={(value) => setDescription(value.htmlValue!)}
                         className={"w-8"}
                         style={{height: '400px'}}/>
                 <div className={"flex flex-column w-4 gap-3"}>
@@ -133,11 +135,15 @@ export function TaskDetailsModal() {
             </div>
             {isEditing ? (
                 <div className="w-12 flex justify-content-between gap-8 mt-3 ">
-                    <Button label={"DELETE"}
-                            severity={"danger"}
-                            text
-                            onClick={() => deleteTask()}>
-                    </Button>
+                    <ConfirmModal header={"Delete Confirmation"}
+                                  message={"Do you want to delete this task?"}
+                                  accept={() => deleteTask()}
+                                  button={
+                                      <Button label={"DELETE"}
+                                              severity={"danger"}
+                                              text>
+                                      </Button>
+                                  }/>
                     <Button loading={requestIsPending}
                             label={"SAVE"}
                             onClick={() => saveChangesInTask()}>
@@ -146,7 +152,8 @@ export function TaskDetailsModal() {
             ) : (
                 <div className="w-12 flex justify-content-end gap-8 mt-3 ">
                     <Button label={"ADD NEW"} className={"align-self-end"}
-                            onClick={() => addNewTask()}>
+                            onClick={() => addNewTask()}
+                            disabled={!newTask.title || !newTask.description}>
                     </Button>
                 </div>
             )}
