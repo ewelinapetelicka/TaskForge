@@ -378,7 +378,7 @@
         1,
         2
       ],
-      "sprintId": null
+      "sprintId": 1
     },
     {
       "id": 20,
@@ -879,7 +879,7 @@
       "id": 1,
       "projectId": 1,
       "name": "sprint1/2 may",
-      "status": "DONE/ IN_PROGRES / OPEN"
+      "status": "DONE"
     }
   ]
 }

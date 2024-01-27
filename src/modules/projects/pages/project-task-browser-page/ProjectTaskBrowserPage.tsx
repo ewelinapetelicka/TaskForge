@@ -1,9 +1,6 @@
-import {useDispatch, useSelector} from "react-redux";
-import {openDetailsTask, selectTasks, setTasks} from "../../../../store/tasks/tasks.slice";
-import {useHttpClient} from "../../../../hooks/use-http-client/use-http-client";
-import {useParams} from "react-router-dom";
+import {openDetailsTask, selectTasks} from "../../../../store/tasks/tasks.slice";
 import {Task} from "../../models/task/task";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
 import {InputText} from "primereact/inputtext";
@@ -16,30 +13,21 @@ import {TaskStatus} from "../../models/task/task-status/task-status";
 import {Button} from "primereact/button";
 import {TaskPriority} from "../../models/task/task-priority/task-priority";
 import {TaskType} from "../../models/task/task-type/task-type";
+import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 export function ProjectTaskBrowserPage() {
-    const tasks = useSelector(selectTasks);
-    const http = useHttpClient();
-    const params = useParams();
-    const dispatch = useDispatch();
     const [filters, setFilters] = useState({
         global: {value: "", matchMode: FilterMatchMode.CONTAINS}
     });
-
+    const params = useParams();
+    const tasks = useSelector(selectTasks);
+    const dispatch = useDispatch();
     const onGlobalFilterChange = (value: string) => {
         setFilters({
             global: {value: value, matchMode: FilterMatchMode.CONTAINS}
         });
     };
-
-    useEffect(() => {
-        getTasks();
-    }, []);
-
-    function getTasks() {
-        http.get("project/" + params.id + "/tasks")
-            .then((tasks: Task[]) => dispatch(setTasks(tasks)))
-    }
 
     function openTaskModal() {
         dispatch(openDetailsTask({
@@ -50,7 +38,8 @@ export function ProjectTaskBrowserPage() {
             status: TaskStatus.TO_DO,
             priority: TaskPriority.LOW,
             type: TaskType.STORY,
-            userIds: []
+            userIds: [],
+            sprintId: null,
         }))
     }
 
