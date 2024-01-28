@@ -1,5 +1,5 @@
 import {Button} from "primereact/button";
-import {openDetailsTask} from "../../../../store/tasks/tasks.slice";
+import {openDetailsTask, setTaskSprintId} from "../../../../store/tasks/tasks.slice";
 import {TaskStatus} from "../../models/task/task-status/task-status";
 import React, {useRef} from "react";
 import {Task} from "../../models/task/task";
@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {ContextMenu} from "primereact/contextmenu";
 import {selectUndoneSprints} from "../../../../store/sprints/sprints.slice";
 import {MenuItem} from "primereact/menuitem";
+import {useHttpClient} from "../../../../hooks/use-http-client/use-http-client";
 
 interface TaskTitleOpenButtonProps {
     task: Task;
@@ -17,12 +18,16 @@ export function TaskTitleOpenButton(props: TaskTitleOpenButtonProps) {
     const dispatch = useDispatch();
     const cm = useRef<ContextMenu>(null!);
     const sprints = useSelector(selectUndoneSprints);
+    const http = useHttpClient();
 
     function getContextItems(): MenuItem[] {
         const menuItems: MenuItem[] = [];
         sprints.filter((e) => e.id !== props.task.sprintId).map((sprint): MenuItem => {
             return {
-                label: sprint.name
+                label: sprint.name,
+                command() {
+                    addTaskToSprint(sprint.id);
+                }
             }
         })
             .forEach((sprint) => {
@@ -30,9 +35,22 @@ export function TaskTitleOpenButton(props: TaskTitleOpenButtonProps) {
             })
 
         if (props.task.sprintId) {
-            menuItems.push({label: "Backlog"})
+            menuItems.push({
+                label: "Backlog", command() {
+                    addTaskToSprint(null)
+                }
+            })
         }
         return menuItems;
+    }
+
+    function addTaskToSprint(sprintId: number | null) {
+        http.patch("tasks/" + props.task.id, {
+            sprintId: sprintId,
+        }).then(() => dispatch(setTaskSprintId({
+            taskId: props.task.id,
+            sprintId: sprintId
+        })))
     }
 
     function renderContextMenu() {
