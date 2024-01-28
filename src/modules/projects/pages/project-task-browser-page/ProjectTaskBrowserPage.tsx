@@ -61,7 +61,7 @@ export function ProjectTaskBrowserPage() {
                             body={(data: Task) => <TaskTypeIndicator taskType={data.type}/>}
                             sortable/>
                     <Column field="title" header="Title" sortable
-                            body={(data: Task) => <TaskTitleOpenButton task={data}/>}/>
+                            body={(data: Task) => <TaskTitleOpenButton task={data} withContextMenu={false}/>}/>
                     <Column field="priority" header="Priority" align={"center"} className={"p-0"}
                             body={(data: Task) => <TaskPriorityIndicator taskPriority={data.priority}/>}
                             sortable/>

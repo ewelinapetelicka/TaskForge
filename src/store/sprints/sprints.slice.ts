@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../store";
 import {Sprint} from "../../modules/projects/models/sprint/sprint";
+import {SprintStatus} from "../../modules/projects/models/sprint/sprint-status/sprint-status";
 
 interface SprintsSlice {
     sprints: Sprint[];
@@ -26,4 +27,5 @@ export const sprintsSlice = createSlice({
 export const selectSprints = (state: RootState) => state.sprints.sprints;
 export const selectSprintById = (id: number | null) => (state: RootState) => state.sprints.sprints.find((el) => el.id === id)!;
 export const selectLoadedSprints = (state: RootState) => state.sprints.sprintsLoaded;
+export const selectUndoneSprints = (state: RootState) => state.sprints.sprints.filter((sprint) => sprint.status !== SprintStatus.DONE)
 export const {setSprints} = sprintsSlice.actions;

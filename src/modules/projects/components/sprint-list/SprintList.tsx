@@ -25,7 +25,7 @@ export function SprintList(props: SprintListProps) {
                         body={(data: Task) => <TaskPriorityIndicator taskPriority={(data.priority)}/>}
                 ></Column>
                 <Column field="Title" header="Title"
-                        body={(data: Task) => <TaskTitleOpenButton task={data}/>}
+                        body={(data: Task) => <TaskTitleOpenButton task={data} withContextMenu={true}/>}
                 ></Column>
                 <Column field="Status" header="Status" className={"w-2"}
                         body={(data: Task) => <TaskStatusIndicator taskStatus={data.status}/>}

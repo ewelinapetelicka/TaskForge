@@ -8,7 +8,6 @@ import {TaskPriorityIndicator} from "../task-priority-indicator/TaskPriorityIndi
 import {TaskTypeIndicator} from "../task-type-indicator/TaskTypeIndicator";
 import {TaskTitleOpenButton} from "../task-title-open-button/TaskTitleOpenButton";
 
-
 export function BacklogList() {
     const tasks = useSelector(selectTasksWithoutSprintIdAndUndone);
 
@@ -21,7 +20,7 @@ export function BacklogList() {
                         body={(data: Task) => <TaskPriorityIndicator taskPriority={(data.priority)}/>}
                 ></Column>
                 <Column field="Title" header="Title"
-                        body={(data: Task) => <TaskTitleOpenButton task={data}/>}
+                        body={(data: Task) => <TaskTitleOpenButton task={data} withContextMenu={true}/>}
                 ></Column>
                 <Column field="Status" header="Status" className={"w-2"}
                         body={(data: Task) => <TaskStatusIndicator taskStatus={data.status}/>}
