@@ -7,13 +7,17 @@ import {TaskStatusIndicator} from "../task-status-indicator/TaskStatusIndicator"
 import {TaskPriorityIndicator} from "../task-priority-indicator/TaskPriorityIndicator";
 import {TaskTypeIndicator} from "../task-type-indicator/TaskTypeIndicator";
 import {TaskTitleOpenButton} from "../task-title-open-button/TaskTitleOpenButton";
+import {TaskCounting} from "../task-counter/TaskCounter";
 
 export function BacklogList() {
     const tasks = useSelector(selectTasksWithoutSprintIdAndUndone);
 
     return (
         <div className="card">
-            <h4>Backlog</h4>
+            <div className={"flex flex-row justify-content-between align-items-center w-12 pr-3"}>
+                <h4>Backlog</h4>
+                <TaskCounting tasks={tasks}/>
+            </div>
             <DataTable value={tasks} tableStyle={{minWidth: '50rem'}} showHeaders={false}
                        size={"small"}>
                 <Column field="Priority" header="Priority" className={"w-1"}

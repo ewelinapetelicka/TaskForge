@@ -8,6 +8,7 @@ import {TaskPriorityIndicator} from "../task-priority-indicator/TaskPriorityIndi
 import {TaskTypeIndicator} from "../task-type-indicator/TaskTypeIndicator";
 import {selectSprintById} from "../../../../store/sprints/sprints.slice";
 import {TaskTitleOpenButton} from "../task-title-open-button/TaskTitleOpenButton";
+import {TaskCounting} from "../task-counter/TaskCounter";
 
 interface SprintListProps {
     sprintId: number;
@@ -19,7 +20,10 @@ export function SprintList(props: SprintListProps) {
 
     return (
         <div className="card">
-            <h4>{sprint.name}</h4>
+            <div className={"flex flex-row justify-content-between align-items-center w-12 pr-3"}>
+                <h4>{sprint.name}</h4>
+                <TaskCounting tasks={tasks}/>
+            </div>
             <DataTable value={tasks} tableStyle={{minWidth: '50rem'}} showHeaders={false} size={"small"}>
                 <Column field="Priority" header="Priority" className={"w-1"}
                         body={(data: Task) => <TaskPriorityIndicator taskPriority={(data.priority)}/>}
