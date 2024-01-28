@@ -1,25 +1,21 @@
 import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
 import {useSelector} from "react-redux";
-import {selectTasksBySprintId} from "../../../../store/tasks/tasks.slice";
+import {selectTasksWithoutSprintIdAndUndone} from "../../../../store/tasks/tasks.slice";
 import {Task} from "../../models/task/task";
 import {TaskStatusIndicator} from "../task-status-indicator/TaskStatusIndicator";
 import {TaskPriorityIndicator} from "../task-priority-indicator/TaskPriorityIndicator";
 import {TaskTypeIndicator} from "../task-type-indicator/TaskTypeIndicator";
-import {selectSprintById} from "../../../../store/sprints/sprints.slice";
 
-interface SprintListProps {
-    sprintId: number;
-}
 
-export function SprintList(props: SprintListProps) {
-    const tasks = useSelector(selectTasksBySprintId(props.sprintId));
-    const sprint = useSelector(selectSprintById(props.sprintId))
+export function BacklogList() {
+    const tasks = useSelector(selectTasksWithoutSprintIdAndUndone);
 
     return (
         <div className="card">
-            <h4>{sprint.name}</h4>
-            <DataTable value={tasks} tableStyle={{minWidth: '50rem'}} showHeaders={false} size={"small"}>
+            <h4>Backlog</h4>
+            <DataTable value={tasks} tableStyle={{minWidth: '50rem'}} showHeaders={false}
+                       size={"small"}>
                 <Column field="Priority" header="Priority" className={"w-1"}
                         body={(data: Task) => <TaskPriorityIndicator taskPriority={(data.priority)}/>}
                 ></Column>

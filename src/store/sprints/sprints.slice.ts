@@ -24,6 +24,6 @@ export const sprintsSlice = createSlice({
 });
 
 export const selectSprints = (state: RootState) => state.sprints.sprints;
-export const selectSprintById = (id: number) => (state: RootState) => state.sprints.sprints.find((el) => el.id === id)!;
+export const selectSprintById = (id: number | null) => (state: RootState) => state.sprints.sprints.find((el) => el.id === id)!;
 export const selectLoadedSprints = (state: RootState) => state.sprints.sprintsLoaded;
 export const {setSprints} = sprintsSlice.actions;

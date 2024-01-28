@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Task} from "../../modules/projects/models/task/task";
 import {RootState} from "../store";
+import {TaskStatus} from "../../modules/projects/models/task/task-status/task-status";
 
 interface TasksState {
     tasks: Task[];
@@ -46,7 +47,8 @@ export const tasksSlice = createSlice({
 });
 
 export const selectTasks = (state: RootState) => state.tasks.tasks;
-export const selectTasksBySprintId = (sprintId: number | null) => (state: RootState) => state.tasks.tasks.filter((el) => el.sprintId === sprintId)
+export const selectTasksBySprintId = (sprintId: number) => (state: RootState) => state.tasks.tasks.filter((el) => el.sprintId === sprintId)
+export const selectTasksWithoutSprintIdAndUndone = (state: RootState) => state.tasks.tasks.filter((el) => el.sprintId === null && el.status !== TaskStatus.DONE)
 export const selectTaskDetail = (state: RootState) => state.tasks.taskDetail as Task;
 export const selectIsTaskDetailOpen = (state: RootState) => state.tasks.taskDetail !== null;
 export const selectLoadedTasks = (state: RootState) => state.tasks.tasksLoaded;

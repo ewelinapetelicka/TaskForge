@@ -65,7 +65,7 @@ export function ProjectLayoutPage() {
                          optionValue="index"
                          className="w-full h-full"/>
             </div>
-            <div className={"w-9 h-full justify-content-center ml-4 mr-4"}>
+            <div className={"w-9 h-full justify-content-center ml-4 pr-2 overflow-y-auto"}>
                 <Outlet></Outlet>
             </div>
             {visible && <TaskDetailsModal></TaskDetailsModal>}
