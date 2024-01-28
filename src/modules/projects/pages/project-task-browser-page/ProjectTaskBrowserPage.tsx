@@ -15,6 +15,7 @@ import {TaskPriority} from "../../models/task/task-priority/task-priority";
 import {TaskType} from "../../models/task/task-type/task-type";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {TaskTitleOpenButton} from "../../components/task-title-open-button/TaskTitleOpenButton";
 
 export function ProjectTaskBrowserPage() {
     const [filters, setFilters] = useState({
@@ -59,17 +60,11 @@ export function ProjectTaskBrowserPage() {
                     <Column field="type" header="Type" align={"center"}
                             body={(data: Task) => <TaskTypeIndicator taskType={data.type}/>}
                             sortable/>
-                    <Column field="title" header="Title" sortable body={(data: Task) => {
-                        return (
-                            <Button
-                                onClick={() => dispatch(openDetailsTask(data))} text rounded
-                                className={data.status === TaskStatus.DONE ? "line-through" : ""}>
-                                {data.title}
-                            </Button>
-                        )
-                    }}/>
+                    <Column field="title" header="Title" sortable
+                            body={(data: Task) => <TaskTitleOpenButton task={data}/>}/>
                     <Column field="priority" header="Priority" align={"center"} className={"p-0"}
-                            body={(data: Task) => <TaskPriorityIndicator taskPriority={data.priority}/>} sortable/>
+                            body={(data: Task) => <TaskPriorityIndicator taskPriority={data.priority}/>}
+                            sortable/>
                     <Column field="status" header="Status" align={"center"} sortable
                             body={(data: Task) => <TaskStatusIndicator taskStatus={data.status}/>}/>
                 </DataTable>

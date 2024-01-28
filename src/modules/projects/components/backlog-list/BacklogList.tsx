@@ -6,6 +6,7 @@ import {Task} from "../../models/task/task";
 import {TaskStatusIndicator} from "../task-status-indicator/TaskStatusIndicator";
 import {TaskPriorityIndicator} from "../task-priority-indicator/TaskPriorityIndicator";
 import {TaskTypeIndicator} from "../task-type-indicator/TaskTypeIndicator";
+import {TaskTitleOpenButton} from "../task-title-open-button/TaskTitleOpenButton";
 
 
 export function BacklogList() {
@@ -20,7 +21,7 @@ export function BacklogList() {
                         body={(data: Task) => <TaskPriorityIndicator taskPriority={(data.priority)}/>}
                 ></Column>
                 <Column field="Title" header="Title"
-                        body={(data: Task) => data.title}
+                        body={(data: Task) => <TaskTitleOpenButton task={data}/>}
                 ></Column>
                 <Column field="Status" header="Status" className={"w-2"}
                         body={(data: Task) => <TaskStatusIndicator taskStatus={data.status}/>}
