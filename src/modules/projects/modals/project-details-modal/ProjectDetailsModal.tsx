@@ -1,6 +1,6 @@
 import {Dialog} from "primereact/dialog";
 import {useDispatch, useSelector} from "react-redux";
-import {closeDetailsProject, selectProjectDetails} from "../../../../store/projects/projects.slice";
+import {addProject, closeDetailsProject, selectProjectDetails} from "../../../../store/projects/projects.slice";
 import {InputText} from "primereact/inputtext";
 import {useState} from "react";
 import {Button} from "primereact/button";
@@ -9,6 +9,8 @@ import {MultiSelect} from "primereact/multiselect";
 import {Avatar} from "primereact/avatar";
 import {User} from "../../../../models/user/user";
 import {InputTextarea} from "primereact/inputtextarea";
+import {useHttpClient} from "../../../../hooks/use-http-client/use-http-client";
+import {useSnackbar} from "notistack";
 
 export function ProjectDetailsModal() {
     const dispatch = useDispatch();
@@ -16,6 +18,16 @@ export function ProjectDetailsModal() {
     const [newProject, setNewProject] = useState({...project});
     const users = useSelector(selectUsers);
     const assignee = useSelector(selectUsersByIds(newProject.userIds));
+    const http = useHttpClient();
+    const {enqueueSnackbar} = useSnackbar();
+
+    function addNewProject() {
+        http.post("projects", {...newProject}).then(() => {
+            dispatch(closeDetailsProject());
+            enqueueSnackbar("New project added");
+            dispatch(addProject(newProject));
+        })
+    }
 
     return (
         <Dialog visible={true} onHide={() => dispatch(closeDetailsProject())} style={{width: '70vw'}}
@@ -49,7 +61,8 @@ export function ProjectDetailsModal() {
                                  userIds: e.target.value.map((user: User) => user.id)
                              })}/>
                 <div className={"w-12 flex justify-content-center"}>
-                    <Button>Add new</Button>
+                    <Button label={"Add new"} onClick={() => addNewProject()}
+                            disabled={!newProject.title || !newProject.description}/>
                 </div>
             </div>
         </Dialog>

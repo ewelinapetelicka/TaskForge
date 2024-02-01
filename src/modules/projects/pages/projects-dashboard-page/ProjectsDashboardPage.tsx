@@ -13,7 +13,6 @@ export function ProjectsDashboardPage() {
     const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
     const dispatch = useDispatch();
     const visible = useSelector(selectIsProjectDetailOpen);
-    
 
     useEffect(() => {
         setFilteredProjects(projects.filter((el) => el.title.toLowerCase().includes(search.toLowerCase())));
@@ -28,6 +27,7 @@ export function ProjectsDashboardPage() {
             userIds: []
         }))
     }
+
 
     return (
         <div className="w-full h-full">

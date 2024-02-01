@@ -32,6 +32,9 @@ export const projectsSlice = createSlice({
         },
         closeDetailsProject: (state) => {
             state.projectDetail = null;
+        },
+        addProject: (state, action: PayloadAction<Project>) => {
+            state.projects.push(action.payload);
         }
 
     }
@@ -41,4 +44,4 @@ export const selectProjects = (state: RootState) => state.projects.projects;
 export const selectProjectById = (id: number) => (state: RootState) => state.projects.projects.find((el) => el.id === id)!;
 export const selectIsProjectDetailOpen = (state: RootState) => state.projects.projectDetail !== null;
 export const selectProjectDetails = (state: RootState) => state.projects.projectDetail as Project;
-export const {setProjects, setProjectById, openDetailsProject, closeDetailsProject} = projectsSlice.actions;
+export const {setProjects, setProjectById, openDetailsProject, closeDetailsProject, addProject} = projectsSlice.actions;
