@@ -41,8 +41,6 @@ export const selectToken = (state: RootState) => state.user.token!;
 export const selectProfileAvatar = (state: RootState) => state.user.profile!.avatar;
 export const selectUsers = (state: RootState) => state.user.users;
 export const selectUsersByIds = (ids: number[]) => createSelector(
-    selectUsers,
-    (users: User[]) => users.filter((el) => ids.includes(el.id))
-);
+    selectUsers, (users: User[]) => users.filter((el) => ids.includes(el.id)));
 
 export const {loginUser, logoutUser, setUsers} = userSlice.actions;

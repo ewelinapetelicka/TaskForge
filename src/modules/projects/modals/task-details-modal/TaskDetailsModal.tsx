@@ -33,9 +33,9 @@ export function TaskDetailsModal() {
     const http = useHttpClient();
     const project = useSelector(selectProjectById(task.projectId));
     const assignee = useSelector(selectUsersByIds(newTask.userIds));
-    const projectUsers = useSelector(selectUsersByIds(project.userIds))
+    const projectUsers = useSelector(selectUsersByIds(project.userIds));
     const {enqueueSnackbar} = useSnackbar();
-    const [isEditing] = useState(!!task.id)
+    const [isEditing] = useState(!!task.id);
 
     function saveChangesInTask() {
         setRequestIsPending(true);
