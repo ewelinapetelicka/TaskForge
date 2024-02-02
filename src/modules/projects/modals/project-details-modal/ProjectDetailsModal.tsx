@@ -22,10 +22,10 @@ export function ProjectDetailsModal() {
     const {enqueueSnackbar} = useSnackbar();
 
     function addNewProject() {
-        http.post("projects", {...newProject}).then(() => {
+        http.post("projects", {...newProject}).then((res) => {
             dispatch(closeDetailsProject());
             enqueueSnackbar("New project added");
-            dispatch(addProject(newProject));
+            dispatch(addProject(res));
         })
     }
 

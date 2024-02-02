@@ -17,14 +17,19 @@ export function ProjectTile(props: ProjectTileProps) {
 
     return (
         <Card className="flex-1 m-2 " style={{minWidth: "25%"}} title={(
-            <div className="flex align-items-center gap-2">
-                <Avatar image={props.project.icon}></Avatar>
-                <h3>{props.project.title}</h3>
+            <div className={"flex  align-items-center justify-content-between pr-3 "}>
+                <div className="flex align-items-center gap-2">
+                    <Avatar image={props.project.icon}></Avatar>
+                    <h3>{props.project.title}</h3>
+                </div>
+                <Button label={"Edit..."} outlined
+                        onClick={() => navigate("/projects/" + props.project.id + "/settings")}/>
             </div>
+
         )}>
             <p className="opacity-60">{props.project.description}</p>
             <div className="flex align-items-center justify-content-between pr-3 pl-2">
-                <AvatarGroup >
+                <AvatarGroup>
                     {users.map(user => (
                         <Avatar image={user.avatar} key={user.id} shape={"circle"} size={'large'}/>
                     ))}

@@ -28,7 +28,6 @@ export function ProjectsDashboardPage() {
         }))
     }
 
-
     return (
         <div className="w-full h-full">
             <div className="w-full flex justify-content-between p-2 pr-6">
