@@ -28,14 +28,16 @@ export function Header() {
         <MegaMenu orientation="horizontal"
                   start={(
                       <div className="flex align-items-center gap-6 pr-6 pl-5">
-                          <div onClick={() => navigate("/dashboard")} className="flex align-items-center gap-3 cursor-pointer">
-                              <i className="pi pi-box" style={{fontSize: '30px', color: 'var(--primary-color)', rotate: '180deg'}}></i>
+                          <div onClick={() => navigate("/dashboard")}
+                               className="flex align-items-center gap-3 cursor-pointer">
+                              <i className="pi pi-box"
+                                 style={{fontSize: '30px', color: 'var(--primary-color)', rotate: '180deg'}}></i>
                               <h2>TaskForge</h2>
                           </div>
                           <Button text
                                   severity={location.pathname.includes('/projects') ? undefined : 'secondary'}
                                   className="flex align-items-center w-full cursor-pointer"
-                              onClick={() => navigate('/projects/dashboard')}>
+                                  onClick={() => navigate('/projects/dashboard')}>
                               Projects
                           </Button>
                       </div>
@@ -44,8 +46,9 @@ export function Header() {
                   end={(
                       <>
                           <Menu model={menuItems} popup ref={menuRight} popupAlignment="right"/>
-                          <Button onClick={(event) => menuRight.current!.toggle(event)} className="p-0 border-0 border-circle">
-                              <Avatar image={avatar} size="large" />
+                          <Button onClick={(event) => menuRight.current!.toggle(event)}
+                                  className="p-0 border-0 border-circle">
+                              <Avatar image={avatar} size="large"/>
                           </Button>
                       </>
                   )}>

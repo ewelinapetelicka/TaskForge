@@ -2,6 +2,7 @@ import {TabPanel, TabView} from "primereact/tabview";
 import {SettingsGeneral} from "../../components/settings-general/SettingsGeneral";
 
 export function ProjectSettingsPage() {
+
     return (
         <div className={"pt-3"}>
             <TabView>
