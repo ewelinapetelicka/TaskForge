@@ -1,5 +1,6 @@
 import {TabPanel, TabView} from "primereact/tabview";
 import {SettingsGeneral} from "../../components/settings-general/SettingsGeneral";
+import {SettingsProjectRemoval} from "../../components/settings-project-removal/SettingsProjectRemoval";
 
 export function ProjectSettingsPage() {
 
@@ -14,6 +15,7 @@ export function ProjectSettingsPage() {
                 <TabPanel header="Security settings">
                 </TabPanel>
                 <TabPanel header="Project removal">
+                    <SettingsProjectRemoval></SettingsProjectRemoval>
                 </TabPanel>
             </TabView>
         </div>

@@ -47,15 +47,21 @@ export function ProjectLayoutPage() {
                     template: itemRenderer
                 },
                 {
+                    label: "Kanban",
+                    path: "kanban",
+                    index: 1,
+                    template: itemRenderer
+                },
+                {
                     label: 'Task browser',
                     path: 'browser',
-                    index: 1,
+                    index: 2,
                     template: itemRenderer,
                 },
                 {
                     label: 'Settings',
                     path: 'settings',
-                    index: 2,
+                    index: 3,
                     template: itemRenderer
                 }
             ]

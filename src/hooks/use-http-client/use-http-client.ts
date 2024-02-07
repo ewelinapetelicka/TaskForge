@@ -49,7 +49,6 @@ export function useHttpClient() {
             return fetch('http://localhost:8000/' + endpoint, {
                 method: "DELETE",
                 headers: {
-                    "Content-Type": "application/json",
                     'Authorization': 'Bearer ' + token
                 }
             }).then((res) => handleResponse(res))
