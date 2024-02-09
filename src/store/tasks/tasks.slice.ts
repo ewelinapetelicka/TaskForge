@@ -45,6 +45,14 @@ export const tasksSlice = createSlice({
                 return el;
             })
         },
+        setTaskStatus: (state, action: PayloadAction<{ status: TaskStatus, taskId: number }>) => {
+            state.tasks = state.tasks.map((el) => {
+                if (action.payload.taskId === el.id) {
+                    el.status = action.payload.status
+                }
+                return el;
+            })
+        },
         openDetailsTask: (state, action: PayloadAction<Task>) => {
             state.taskDetail = action.payload;
         },
@@ -68,5 +76,6 @@ export const {
     removeTaskById,
     addTask,
     editTask,
-    setTaskSprintId
+    setTaskSprintId,
+    setTaskStatus
 } = tasksSlice.actions;
