@@ -6,7 +6,24 @@ import "./ProjectKanbanPage.css";
 import {Task} from "../../models/task/task";
 import {TaskStatus} from "../../models/task/task-status/task-status";
 import {useHttpClient} from "../../../../hooks/use-http-client/use-http-client";
+import {AvatarGroup} from "primereact/avatargroup";
+import {Avatar} from "primereact/avatar";
+import {selectUsersByIds} from "../../../../store/user/user.slice";
+import {TaskPriorityIndicator} from "../../components/task-priority-indicator/TaskPriorityIndicator";
+import {TaskTypeIndicator} from "../../components/task-type-indicator/TaskTypeIndicator";
 
+interface UsersAssignedToTaskProps {
+    task: Task
+}
+
+function UsersAssignedToTask(props: UsersAssignedToTaskProps) {
+    const users = useSelector(selectUsersByIds(props.task.userIds));
+    return (
+        <AvatarGroup>
+            {users.map((u) => <Avatar image={u.avatar} shape="circle" size="large"/>)}
+        </AvatarGroup>
+    )
+}
 
 export function ProjectKanbanPage() {
     const tasks = useSelector(selectTasks);
@@ -65,8 +82,17 @@ export function ProjectKanbanPage() {
                            onCardDragEnd={(board: any, task: any) => changeTaskStatus(board, task)}
                            renderCard={(el) => {
                                return (
-                                   <div className={"bg-gray-600 w-12 p-1 border-round"}>
-                                       <h4 className={"m-3"}>{el.title}</h4>
+                                   <div
+                                       className={"flex bg-gray-600 w-12 p-1 border-round justify-content-between align-items-center"}>
+                                       <div className={"flex"}>
+                                           <div>
+                                               <div>
+                                                   <TaskPriorityIndicator taskPriority={el.priority}/>
+                                               </div>
+                                               <TaskTypeIndicator taskType={el.type}/>
+                                           </div>
+                                           <h4 className={"m-3"}>{el.title}</h4></div>
+                                       <UsersAssignedToTask task={el}/>
                                    </div>
                                )
                            }}/>
