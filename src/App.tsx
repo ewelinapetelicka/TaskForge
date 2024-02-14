@@ -47,7 +47,8 @@ const router = createBrowserRouter([
                                 element: <ProjectSettingsPage/>
                             },
                             {
-                                path: 'browser',
+                                path: 'brow' +
+                                    'ser',
                                 element: <ProjectTaskBrowserPage/>
                             },
                             {
