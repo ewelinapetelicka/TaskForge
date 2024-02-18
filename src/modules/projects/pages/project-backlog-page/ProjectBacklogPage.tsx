@@ -25,7 +25,7 @@ export function ProjectBacklogPage() {
     return (
         <div className={"pt-2"}>
             <Button label={"ADD NEW"} outlined onClick={() => openSprintModal()}></Button>
-            {sprints.map((el) => <SprintList sprintId={el.id}></SprintList>)}
+            {sprints.map((el) => <SprintList sprintId={el.id} key={el.id}></SprintList>)}
             <BacklogList></BacklogList>
             {visible && <SprintDetailsModal></SprintDetailsModal>}
         </div>

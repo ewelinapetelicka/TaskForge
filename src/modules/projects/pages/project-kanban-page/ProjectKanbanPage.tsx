@@ -22,7 +22,7 @@ function UsersAssignedToTask(props: UsersAssignedToTaskProps) {
     const users = useSelector(selectUsersByIds(props.task.userIds));
     return (
         <AvatarGroup>
-            {users.map((u) => <Avatar image={u.avatar} shape="circle" size="large"/>)}
+            {users.map((u, index) => <Avatar image={u.avatar} key={index} shape="circle" size="large"/>)}
         </AvatarGroup>
     )
 }
@@ -59,19 +59,16 @@ export function ProjectKanbanPage() {
         })
     }, [tasks]);
 
-    function changeTaskStatus(board: KanbanBoard<Task>, task: Task) {
+    function changeTaskStatus(task: Task, positionEnd: { toColumnId: number, toPosition: number }) {
         let status: TaskStatus = undefined!;
-        const isInToDoColumn = !!board.columns[0].cards.find((e) => e.id === task.id);
-        const isInProgressColumn = !!board.columns[1].cards.find((e) => e.id === task.id);
-        const isInDoneColumn = !!board.columns[2].cards.find((e) => e.id === task.id);
 
-        if (isInDoneColumn) {
+        if (positionEnd.toColumnId === 3) {
             status = TaskStatus.DONE;
         }
-        if (isInProgressColumn) {
+        if (positionEnd.toColumnId === 2) {
             status = TaskStatus.IN_PROGRESS;
         }
-        if (isInToDoColumn) {
+        if (positionEnd.toColumnId === 1) {
             status = TaskStatus.TO_DO;
         }
 
@@ -82,11 +79,10 @@ export function ProjectKanbanPage() {
         })
     }
 
-
     return (
         <ControlledBoard disableColumnDrag
                          allowAddCard={false}
-                         onCardDragEnd={(board: any, task: any) => changeTaskStatus(board, task)}
+                         onCardDragEnd={(task: Task, a, positionEnd: any) => changeTaskStatus(task, positionEnd)}
                          renderCard={(el) => {
                              return (
                                  <div
