@@ -6,11 +6,13 @@ import {SprintStatus} from "../../modules/projects/models/sprint/sprint-status/s
 interface SprintsSlice {
     sprints: Sprint[];
     sprintsLoaded: boolean;
+    sprintDetails: Sprint | null;
 }
 
 const initialState: SprintsSlice = {
     sprints: [],
-    sprintsLoaded: false
+    sprintsLoaded: false,
+    sprintDetails: null
 }
 
 export const sprintsSlice = createSlice({
@@ -21,11 +23,22 @@ export const sprintsSlice = createSlice({
             state.sprints = action.payload;
             state.sprintsLoaded = true;
         },
+        openDetailsSprint: (state, action: PayloadAction<Sprint>) => {
+            state.sprintDetails = action.payload;
+        },
+        closeDetailsSprint: (state) => {
+            state.sprintDetails = null;
+        },
+        addSprint: (state, action: PayloadAction<Sprint>) => {
+            state.sprints.push(action.payload);
+        }
     }
 });
 
 export const selectSprints = (state: RootState) => state.sprints.sprints;
 export const selectSprintById = (id: number | null) => (state: RootState) => state.sprints.sprints.find((el) => el.id === id)!;
 export const selectLoadedSprints = (state: RootState) => state.sprints.sprintsLoaded;
-export const selectUndoneSprints = (state: RootState) => state.sprints.sprints.filter((sprint) => sprint.status !== SprintStatus.DONE)
-export const {setSprints} = sprintsSlice.actions;
+export const selectUndoneSprints = (state: RootState) => state.sprints.sprints.filter((sprint) => sprint.status !== SprintStatus.DONE);
+export const selectSprintDetailOpen = (state: RootState) => state.sprints.sprintDetails !== null;
+export const selectSprintDetail = (state: RootState) => state.sprints.sprintDetails as Sprint;
+export const {setSprints, openDetailsSprint, closeDetailsSprint, addSprint} = sprintsSlice.actions;
