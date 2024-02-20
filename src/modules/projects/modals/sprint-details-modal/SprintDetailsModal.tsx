@@ -15,6 +15,7 @@ export function SprintDetailsModal() {
     const [newSprint, setNewSprint] = useState({...sprint});
     const http = useHttpClient();
     const {enqueueSnackbar} = useSnackbar();
+    const [isEditing] = useState(!!sprint.id);
 
     function addNewSprint() {
         http.post("sprints/", {...newSprint}).then((data) => {
@@ -24,12 +25,20 @@ export function SprintDetailsModal() {
         })
     }
 
+    function saveChangesInSprint() {
+        return (
+            <div>test</div>
+        )
+    }
+
     return (
-        <Dialog header={"Create new sprint"} visible={true} onHide={() => dispatch(closeDetailsSprint())}
+        <Dialog header={isEditing ? "Edit sprint" : "Create new sprint"} visible={true}
+                onHide={() => dispatch(closeDetailsSprint())}
                 className={"w-6"}>
             <div>
                 <p>Add sprint name:</p>
                 <InputText placeholder={"Add sprint title"} className={"w-12"}
+                           value={newSprint.name}
                            onChange={(e) => setNewSprint({...newSprint, name: e.target.value})}/>
             </div>
             <div>
@@ -45,10 +54,17 @@ export function SprintDetailsModal() {
                     ))}
                 </div>
             </div>
-            <div className={"w-12 flex justify-content-center"}>
-                <Button label={"ADD NEW"} className={"align-self-end"} onClick={() => addNewSprint()}
-                        disabled={!newSprint.name}/>
-            </div>
+            {isEditing ? (
+                <div className={"w-12 flex justify-content-center"}>
+                    <Button label={"SAVE"} className={"align-self-end"} onClick={() => saveChangesInSprint()}
+                            disabled={!newSprint.name}/>
+                </div>
+            ) : (
+                <div className={"w-12 flex justify-content-center"}>
+                    <Button label={"ADD NEW"} className={"align-self-end"} onClick={() => addNewSprint()}
+                            disabled={!newSprint.name}/>
+                </div>
+            )}
         </Dialog>
     )
 }
