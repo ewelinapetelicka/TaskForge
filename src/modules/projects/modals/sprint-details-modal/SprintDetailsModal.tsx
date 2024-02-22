@@ -1,7 +1,7 @@
 import {Dialog} from "primereact/dialog";
 import {InputText} from "primereact/inputtext";
 import {RadioButton} from "primereact/radiobutton";
-import {addSprint, closeDetailsSprint, selectSprintDetail} from "../../../../store/sprints/sprints.slice";
+import {addSprint, closeDetailsSprint, editSprint, selectSprintDetail} from "../../../../store/sprints/sprints.slice";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {sprintStatusOptions} from "../../const/sprint-status-options";
@@ -26,9 +26,11 @@ export function SprintDetailsModal() {
     }
 
     function saveChangesInSprint() {
-        return (
-            <div>test</div>
-        )
+        http.patch("sprints/" + newSprint.id, {...newSprint}).then(() => {
+            dispatch(closeDetailsSprint());
+            enqueueSnackbar(newSprint.name + ' has been edited successfully');
+            dispatch(editSprint(newSprint));
+        })
     }
 
     return (

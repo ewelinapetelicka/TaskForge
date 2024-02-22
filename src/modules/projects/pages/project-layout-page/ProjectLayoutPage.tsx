@@ -69,8 +69,12 @@ export function ProjectLayoutPage() {
     ];
 
     useEffect(() => {
-        const index = items[1].items!.find(option => location.pathname.includes(option.path))!.index;
-        setSelectedIndex(index);
+        const item = items[1].items!.find(option => location.pathname.includes(option.path));
+        if (item) {
+            setSelectedIndex(item.index);
+        } else {
+            setSelectedIndex(-1);
+        }
     }, []);
 
     useEffect(() => {

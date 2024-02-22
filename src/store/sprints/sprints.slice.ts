@@ -31,6 +31,14 @@ export const sprintsSlice = createSlice({
         },
         addSprint: (state, action: PayloadAction<Sprint>) => {
             state.sprints.push(action.payload);
+        },
+        editSprint: (state, action: PayloadAction<Sprint>) => {
+            state.sprints = state.sprints.map((el) => {
+                if (el.id === action.payload.id) {
+                    return action.payload
+                }
+                return el;
+            });
         }
     }
 });
@@ -41,4 +49,4 @@ export const selectLoadedSprints = (state: RootState) => state.sprints.sprintsLo
 export const selectUndoneSprints = (state: RootState) => state.sprints.sprints.filter((sprint) => sprint.status !== SprintStatus.DONE);
 export const selectSprintDetailOpen = (state: RootState) => state.sprints.sprintDetails !== null;
 export const selectSprintDetail = (state: RootState) => state.sprints.sprintDetails as Sprint;
-export const {setSprints, openDetailsSprint, closeDetailsSprint, addSprint} = sprintsSlice.actions;
+export const {setSprints, openDetailsSprint, closeDetailsSprint, addSprint, editSprint} = sprintsSlice.actions;

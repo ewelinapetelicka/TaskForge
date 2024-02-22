@@ -15,6 +15,7 @@ import {ProjectTaskBrowserPage} from "./modules/projects/pages/project-task-brow
 
 import {PrimeReactProvider} from 'primereact/api';
 import {ProjectKanbanPage} from "./modules/projects/pages/project-kanban-page/ProjectKanbanPage";
+import {ProjectDashboardPage} from "./modules/projects/pages/project-dashboard-page/ProjectDashboardPage";
 
 
 const router = createBrowserRouter([
@@ -47,13 +48,16 @@ const router = createBrowserRouter([
                                 element: <ProjectSettingsPage/>
                             },
                             {
-                                path: 'brow' +
-                                    'ser',
+                                path: 'browser',
                                 element: <ProjectTaskBrowserPage/>
                             },
                             {
                                 path: "kanban",
                                 element: <ProjectKanbanPage/>
+                            },
+                            {
+                                path: "project-dashboard",
+                                element: <ProjectDashboardPage/>
                             }
                         ]
                     }

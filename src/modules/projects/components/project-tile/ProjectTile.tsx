@@ -34,7 +34,7 @@ export function ProjectTile(props: ProjectTileProps) {
                         <Avatar image={user.avatar} key={user.id} shape={"circle"} size={'large'}/>
                     ))}
                 </AvatarGroup>
-                <Button onClick={() => navigate('/projects/' + props.project.id + '/backlog')}>MORE</Button>
+                <Button onClick={() => navigate('/projects/' + props.project.id + '/project-dashboard')}>MORE</Button>
             </div>
         </Card>
     )
