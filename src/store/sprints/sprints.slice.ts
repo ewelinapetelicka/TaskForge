@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../store";
-import {Sprint} from "../../modules/projects/models/sprint/sprint";
-import {SprintStatus} from "../../modules/projects/models/sprint/sprint-status/sprint-status";
+import {Sprint} from "../../modules/project-details/models/sprint/sprint";
+import {SprintStatus} from "../../modules/project-details/models/sprint/sprint-status/sprint-status";
 
 interface SprintsSlice {
     sprints: Sprint[];

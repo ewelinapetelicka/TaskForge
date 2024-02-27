@@ -3,25 +3,23 @@ import './App.css';
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import {Provider} from "react-redux";
 import {DashboardPage} from "./modules/dashboard/pages/dashboard-page/DashboardPage";
-import {LayoutPage} from "./pages/layout-page/LayoutPage";
-import {ProjectsDashboardPage} from "./modules/projects/pages/projects-dashboard-page/ProjectsDashboardPage";
+import {Layout} from "./Layout";
+import {ProjectListPage} from "./modules/project-list/pages/project-list-page/ProjectListPage";
 import {store} from "./store/store";
 import {SnackbarProvider} from "notistack";
-import {ProjectLayoutPage} from "./modules/projects/pages/project-layout-page/ProjectLayoutPage";
-import {ProjectsLayoutPage} from "./modules/projects/pages/projects-layout-page/ProjectsLayoutPage";
-import {ProjectBacklogPage} from "./modules/projects/pages/project-backlog-page/ProjectBacklogPage";
-import {ProjectSettingsPage} from "./modules/projects/pages/project-settings-page/ProjectSettingsPage";
-import {ProjectTaskBrowserPage} from "./modules/projects/pages/project-task-browser-page/ProjectTaskBrowserPage";
-
-import {PrimeReactProvider} from 'primereact/api';
-import {ProjectKanbanPage} from "./modules/projects/pages/project-kanban-page/ProjectKanbanPage";
-import {ProjectDashboardPage} from "./modules/projects/pages/project-dashboard-page/ProjectDashboardPage";
-
+import {ProjectListLayout} from "./modules/project-list/ProjectListLayout";
+import {ProjectDetailsLayout} from "./modules/project-details/ProjectDetailsLayout";
+import {ProjectBacklogPage} from "./modules/project-details/pages/project-backlog-page/ProjectBacklogPage";
+import {ProjectSettingsPage} from "./modules/project-details/pages/project-settings-page/ProjectSettingsPage";
+import {ProjectTaskBrowserPage} from "./modules/project-details/pages/project-task-browser-page/ProjectTaskBrowserPage";
+import {ProjectKanbanPage} from "./modules/project-details/pages/project-kanban-page/ProjectKanbanPage";
+import {ProjectDashboardPage} from "./modules/project-details/pages/project-dashboard-page/ProjectDashboardPage";
+import {PrimeReactProvider} from "primereact/api";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <LayoutPage></LayoutPage>,
+        element: <Layout></Layout>,
         children: [
             {
                 path: 'dashboard',
@@ -29,15 +27,15 @@ const router = createBrowserRouter([
             },
             {
                 path: 'projects',
-                element: <ProjectsLayoutPage></ProjectsLayoutPage>,
+                element: <ProjectListLayout></ProjectListLayout>,
                 children: [
                     {
                         path: 'dashboard',
-                        element: <ProjectsDashboardPage/>
+                        element: <ProjectListPage/>
                     },
                     {
                         path: ':id',
-                        element: <ProjectLayoutPage/>,
+                        element: <ProjectDetailsLayout/>,
                         children: [
                             {
                                 path: 'backlog',

@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Task} from "../../modules/projects/models/task/task";
 import {RootState} from "../store";
-import {TaskStatus} from "../../modules/projects/models/task/task-status/task-status";
+import {Task} from "../../modules/project-details/models/task/task";
+import {TaskStatus} from "../../modules/project-details/models/task/task-status/task-status";
 
 interface TasksState {
     tasks: Task[];
