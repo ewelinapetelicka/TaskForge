@@ -63,7 +63,12 @@ export const tasksSlice = createSlice({
 });
 
 export const selectTasks = (state: RootState) => state.tasks.tasks;
-export const selectTasksBySprintId = (sprintId: number) => (state: RootState) => state.tasks.tasks.filter((el) => el.sprintId === sprintId)
+export const selectTasksBySprintId = (sprintId: number | undefined) => (state: RootState): Task[] => {
+    if (!sprintId) {
+        return [];
+    }
+    return state.tasks.tasks.filter((el) => el.sprintId === sprintId)
+}
 export const selectTasksWithoutSprintIdAndUndone = (state: RootState) => state.tasks.tasks.filter((el) => el.sprintId === null && el.status !== TaskStatus.DONE)
 export const selectTaskDetail = (state: RootState) => state.tasks.taskDetail as Task;
 export const selectIsTaskDetailOpen = (state: RootState) => state.tasks.taskDetail !== null;
