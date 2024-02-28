@@ -612,7 +612,7 @@
         7,
         8
       ],
-      "sprintId": null
+      "sprintId": 4
     },
     {
       "id": 37,
@@ -627,7 +627,7 @@
         7,
         8
       ],
-      "sprintId": null
+      "sprintId": 4
     },
     {
       "id": 38,
@@ -641,7 +641,7 @@
         5,
         8
       ],
-      "sprintId": null
+      "sprintId": 4
     },
     {
       "id": 39,
@@ -697,7 +697,7 @@
         5,
         8
       ],
-      "sprintId": null
+      "sprintId": 4
     },
     {
       "id": 43,
@@ -710,7 +710,7 @@
       "userIds": [
         7
       ],
-      "sprintId": null
+      "sprintId": 4
     },
     {
       "id": 44,
@@ -737,7 +737,7 @@
       "userIds": [
         8
       ],
-      "sprintId": null
+      "sprintId": 5
     },
     {
       "id": 46,
@@ -764,7 +764,7 @@
       "userIds": [
         8
       ],
-      "sprintId": null
+      "sprintId": 5
     },
     {
       "id": 48,
@@ -778,7 +778,7 @@
         6,
         8
       ],
-      "sprintId": null
+      "sprintId": 5
     },
     {
       "id": 49,
@@ -791,7 +791,7 @@
       "userIds": [
         7
       ],
-      "sprintId": null
+      "sprintId": 5
     },
     {
       "id": 50,
@@ -818,7 +818,7 @@
         7,
         8
       ],
-      "sprintId": null
+      "sprintId": 5
     },
     {
       "id": 52,
@@ -891,6 +891,18 @@
       "id": 3,
       "projectId": 1,
       "name": "sprint 1/3 june",
+      "status": "OPEN"
+    },
+    {
+      "id": 4,
+      "name": "Week 21/52",
+      "projectId": 2,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 5,
+      "name": "Week 22/52",
+      "projectId": 2,
       "status": "OPEN"
     }
   ]

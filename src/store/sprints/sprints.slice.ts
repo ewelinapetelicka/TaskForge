@@ -48,7 +48,6 @@ export const selectSprintById = (id: number | null) => (state: RootState) => sta
 export const selectLoadedSprints = (state: RootState) => state.sprints.sprintsLoaded;
 export const selectUndoneSprints = (state: RootState) => state.sprints.sprints.filter((sprint) => sprint.status !== SprintStatus.DONE);
 export const selectInProgressSprint = (state: RootState) => state.sprints.sprints.find((sprint) => sprint.status === SprintStatus.IN_PROGRESS);
-export const selectHasSprintInProgress = (state: RootState) => !!state.sprints.sprints.find((sprint) => sprint.status === SprintStatus.IN_PROGRESS);
 export const selectSprintDetailOpen = (state: RootState) => state.sprints.sprintDetails !== null;
 export const selectSprintDetail = (state: RootState) => state.sprints.sprintDetails as Sprint;
 export const {setSprints, openDetailsSprint, closeDetailsSprint, addSprint, editSprint} = sprintsSlice.actions;
