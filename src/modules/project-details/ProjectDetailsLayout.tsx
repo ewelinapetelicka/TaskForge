@@ -32,7 +32,8 @@ export function ProjectDetailsLayout() {
         {
             template: () => {
                 return (
-                    <p className="font-medium text-xl font-semibold pl-3">
+                    <p className="font-medium text-xl font-semibold pl-3 cursor-pointer select-none"
+                       onClick={() => navigate("/projects/" + params.id + "/project-dashboard")}>
                         {project.title}
                     </p>
                 );
@@ -105,7 +106,7 @@ export function ProjectDetailsLayout() {
     return (
         <div className="w-full h-full flex">
             <div className={"w-3 h-full "}>
-                <Menu model={items} className="w-full h-full"/>
+                <Menu model={items} className="w-full h-full select-none"/>
             </div>
             <div className={"w-9 h-full justify-content-center ml-4 pr-2 overflow-y-auto"}>
                 <Outlet></Outlet>

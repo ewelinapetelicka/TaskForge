@@ -29,7 +29,7 @@ export function Header() {
                   start={(
                       <div className="flex align-items-center gap-6 pr-6 pl-5">
                           <div onClick={() => navigate("/dashboard")}
-                               className="flex align-items-center gap-3 cursor-pointer">
+                               className="flex align-items-center gap-3 cursor-pointer select-none">
                               <i className="pi pi-box"
                                  style={{fontSize: '30px', color: 'var(--primary-color)', rotate: '180deg'}}></i>
                               <h2>TaskForge</h2>
