@@ -41,6 +41,7 @@ export function ProjectTaskBrowserPage() {
             type: TaskType.STORY,
             userIds: [],
             sprintId: null,
+            estimation: null
         }))
     }
 

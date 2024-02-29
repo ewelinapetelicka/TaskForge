@@ -23,6 +23,7 @@ import {selectProjectById} from "../../../../store/projects/projects.slice";
 import {selectUsersByIds} from "../../../../store/user/user.slice";
 import {User} from "../../../../models/user/user";
 import {ConfirmationDialog} from "../../../../dialogs/confirmation-dialog/ConfirmationDialog";
+import {Dropdown} from "primereact/dropdown";
 
 export function TaskDetailsDialog() {
     const task = useSelector(selectTaskDetail);
@@ -36,10 +37,15 @@ export function TaskDetailsDialog() {
     const projectUsers = useSelector(selectUsersByIds(project.userIds));
     const {enqueueSnackbar} = useSnackbar();
     const [isEditing] = useState(!!task.id);
+    const estimations = [0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100];
 
     function saveChangesInTask() {
         setRequestIsPending(true);
-        http.patch("tasks/" + newTask.id, {...newTask, description}).then(() => {
+        http.patch("tasks/" + newTask.id, {
+            ...newTask,
+            description,
+            estimation: newTask.estimation || null
+        }).then(() => {
             dispatch(closeDetailsTask());
             enqueueSnackbar(newTask.title + ' has been edited successfully');
             dispatch(editTask(newTask));
@@ -47,7 +53,11 @@ export function TaskDetailsDialog() {
     }
 
     function addNewTask() {
-        http.post("tasks", {...newTask, description}).then(() => {
+        http.post("tasks", {
+            ...newTask,
+            description,
+            estimation: newTask.estimation || null
+        }).then(() => {
             dispatch(closeDetailsTask());
             enqueueSnackbar("New task added");
             dispatch(addTask(newTask));
@@ -95,6 +105,23 @@ export function TaskDetailsDialog() {
                                      ...newTask,
                                      userIds: e.target.value.map((user: User) => user.id)
                                  })}/>
+                    <p>Task estimation:</p>
+                    <Dropdown
+                        value={newTask.estimation}
+                        options={estimations}
+                        showClear
+                        itemTemplate={(el) => {
+                            return <div>{el}</div>
+                        }}
+                        placeholder="Add task estimation"
+                        className="w-full flex gap-1 flex-wrap "
+                        onChange={(e) => {
+                            setNewTask({
+                                ...newTask,
+                                estimation: e.target.value
+                            })
+                        }}
+                    />
                     <p>Task priority:</p>
                     <div className="flex gap-3">
                         {taskPriorityOptions.map(option => (

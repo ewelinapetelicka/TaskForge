@@ -12,4 +12,5 @@ export interface Task {
     priority: TaskPriority;
     userIds: number[];
     sprintId: number | null;
+    estimation: number[] | null;
 }
