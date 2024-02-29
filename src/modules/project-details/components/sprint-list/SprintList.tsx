@@ -26,7 +26,7 @@ export function SprintList(props: SprintListProps) {
     return (
         <div className="card">
             <div className={"flex flex-row justify-content-between align-items-center w-12 pr-3"}>
-                <div className={"flex align-items-center gap-2 pt-3 pb-3 w-10 h-5rem"}>
+                <div className={"flex align-items-center gap-2 pt-3 pb-3 w-0 h-5rem"}>
                     <SprintStatusIndicator sprintStatus={sprint.status} key={sprint.id}/>
                     <div
                         className={"pt-2 pb-2 hover:bg-gray-800 p-1 border-round w-10 flex align-items-center gap-2"}

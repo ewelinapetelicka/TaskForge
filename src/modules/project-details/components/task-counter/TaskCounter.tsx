@@ -7,6 +7,8 @@ export interface TaskCounterProps {
 
 export function TaskCounting(props: TaskCounterProps) {
     const [text, setText] = useState('');
+    const estimations = props.tasks.map((el) => el.estimation || 0);
+    const estimationsSum = estimations.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
     useEffect(() => {
         if (props.tasks.length === 0) {
@@ -21,5 +23,7 @@ export function TaskCounting(props: TaskCounterProps) {
     }, [props.tasks]);
 
 
-    return <span className={"text-gray-400"}>{text}</span>
+    return (
+        <span className={"text-gray-400"}>{text} | estimate: {estimationsSum}</span>
+    )
 }
