@@ -47,4 +47,5 @@ export const selectProjectById = (id: number) => (state: RootState) => state.pro
 export const selectIsProjectDetailOpen = (state: RootState) => state.projects.projectDetail !== null;
 export const selectProjectDetails = (state: RootState) => state.projects.projectDetail as Project;
 export const selectLoadedProjects = (state: RootState) => state.projects.loadedProjects;
+export const selectProjectByUserId = (id: number) => (state: RootState) => state.projects.projects.filter((el) => el.userIds.includes(id));
 export const {setProjects, setProjectById, openDetailsProject, closeDetailsProject, addProject} = projectsSlice.actions;

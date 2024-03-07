@@ -15,6 +15,8 @@ import {ProjectTaskBrowserPage} from "./modules/project-details/pages/project-ta
 import {ProjectKanbanPage} from "./modules/project-details/pages/project-kanban-page/ProjectKanbanPage";
 import {ProjectDashboardPage} from "./modules/project-details/pages/project-dashboard-page/ProjectDashboardPage";
 import {PrimeReactProvider} from "primereact/api";
+import {ProfilePage} from "./modules/profile/pages/profile-page/ProfilePage";
+import {ProfileLayout} from "./modules/profile/ProfileLayout";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +26,16 @@ const router = createBrowserRouter([
             {
                 path: 'dashboard',
                 element: <DashboardPage/>,
+            },
+            {
+                path: "profile",
+                element: <ProfileLayout/>,
+                children: [
+                    {
+                        path: "",
+                        element: <ProfilePage/>
+                    }
+                ]
             },
             {
                 path: 'projects',
