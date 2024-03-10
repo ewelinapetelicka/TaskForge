@@ -27,19 +27,11 @@ export function Header() {
     return (
         <MegaMenu orientation="horizontal"
                   start={(
-                      <div className="flex align-items-center gap-6 pr-6 pl-5">
-                          <div onClick={() => navigate("/dashboard")}
-                               className="flex align-items-center gap-3 cursor-pointer select-none">
-                              <i className="pi pi-box"
-                                 style={{fontSize: '30px', color: 'var(--primary-color)', rotate: '180deg'}}></i>
-                              <h2>TaskForge</h2>
-                          </div>
-                          <Button text
-                                  severity={location.pathname.includes('/project-list') ? undefined : 'secondary'}
-                                  className="flex align-items-center w-full cursor-pointer"
-                                  onClick={() => navigate('/projects/dashboard')}>
-                              Projects
-                          </Button>
+                      <div onClick={() => navigate("/projects/dashboard")}
+                           className="flex align-items-center gap-3 cursor-pointer select-none">
+                          <i className="pi pi-box"
+                             style={{fontSize: '30px', color: 'var(--primary-color)', rotate: '180deg'}}></i>
+                          <h2>TaskForge</h2>
                       </div>
                   )
                   }

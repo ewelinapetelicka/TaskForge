@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import {Provider} from "react-redux";
-import {DashboardPage} from "./modules/dashboard/pages/dashboard-page/DashboardPage";
 import {Layout} from "./Layout";
 import {ProjectListPage} from "./modules/project-list/pages/project-list-page/ProjectListPage";
 import {store} from "./store/store";
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
         path: '/',
         element: <Layout></Layout>,
         children: [
-            {
-                path: 'dashboard',
-                element: <DashboardPage/>,
-            },
             {
                 path: "profile",
                 element: <ProfileLayout/>,
