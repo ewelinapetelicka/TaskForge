@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# TaskForge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**TaskForge** is a project management web application designed to streamline workflows, improve task organization, and
+support effective team collaboration through intuitive sprint-based planning and tracking.
 
-## Available Scripts
+## 🧩 Description
 
-In the project directory, you can run:
+The app enables users to manage entire projects by:
 
-### `npm start`
+- Creating and assigning users
+- Building product backlogs
+- Organizing tasks into sprints
+- Editing task details and statuses via an interactive **Kanban board** (drag-and-drop)
+- Tracking sprint progress with statistics and reports
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Additional features include filtering tasks by **status**, **priority**, and **sprint**, as well as a **search function
+** for quickly locating specific assignments.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The system promotes agile project organization, visibility, and accountability across teams.
 
-### `npm test`
+## ✨ Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Sprint-based task management with drag-and-drop Kanban board
+- Task filtering by priority, status, and sprint
+- In-depth task editing and assignment options
+- Sprint statistics and reporting (via Chart.js)
+- Real-time updates and responsive UI
+- Project/user management
 
-### `npm run build`
+## 🛠️ Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React 18**
+- **TypeScript**
+- **Redux Toolkit**
+- **React Router 6**
+- **PrimeReact** (UI components)
+- **Chart.js** (reporting & stats)
+- **react-kanban** (Kanban board)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🪪 Credentials
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can use the following credentials to log into the application:
 
-### `npm run eject`
+- **Email:** `admin@gmail.com`
+- **Password:** `123456`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🚀 Getting Started
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To run the project locally:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm run start
+npm run backend:auth
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
