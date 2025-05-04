@@ -6,6 +6,7 @@ import {useSnackbar} from "notistack";
 import {Card} from "primereact/card";
 import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
+import {useNavigate} from "react-router-dom";
 
 export function LoginPage() {
     const [email, setEmail] = useState("admin@gmail.com");
@@ -13,6 +14,7 @@ export function LoginPage() {
     const dispatch = useDispatch();
     const http = useHttpClient();
     const {enqueueSnackbar} = useSnackbar();
+    const navigate = useNavigate();
 
     function logIn() {
         http.post("login-page", {
@@ -20,6 +22,7 @@ export function LoginPage() {
             email: email
         })
             .then((res) => dispatch(loginUser(res)))
+            .then(() => navigate("/projects/dashboard"))
             .catch((err: Error) => enqueueSnackbar(err.message))
     }
 
